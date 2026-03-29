@@ -574,7 +574,7 @@ async function loadGithubProjects() {
 
     // ── CTA count
     if (cta) {
-      cta.innerHTML = `View all ${visible.length} repos on GitHub <i data-lucide="arrow-up-right"></i>`;
+      cta.innerHTML = `View all repos on GitHub <i data-lucide="arrow-up-right"></i>`;
       if (typeof lucide !== 'undefined') lucide.createIcons();
     }
 
