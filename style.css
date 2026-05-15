@@ -115,6 +115,19 @@ i[data-lucide] svg {
   body { cursor: auto; }
 }
 
+/* Hide system cursor on all interactive elements so only the custom cursor shows
+   (use !important to override default pointer/cursor rules). On touch devices
+   the above media rule keeps `cursor: auto` so touch UX is preserved. */
+html, body, a, button, input, textarea, select, label, summary, [role="button"] {
+  cursor: none !important;
+}
+a:hover, a:active, a:focus,
+button:hover, button:active, button:focus,
+input:hover, input:active, input:focus,
+textarea:hover, textarea:active, textarea:focus {
+  cursor: none !important;
+}
+
 /* ── UTILS ───────────────────────────────── */
 .mono { font-family: var(--mono); }
 .accent { color: var(--accent); }
@@ -611,6 +624,15 @@ section {
 .about-link:hover {
   border-color: var(--accent);
   color: var(--accent);
+}
+
+/* Ensure inline SVG icons inside .about-link match the mail icon sizing and align */
+.about-link svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  vertical-align: middle;
+  display: inline-block;
 }
 .about-img-wrap {
   position: relative;
