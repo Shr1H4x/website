@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nocturnal Writeup | Shrijesh Pokharel (Shr1H4x)</title>
+  <meta name="description" content="Hack The Box Nocturnal writeup by Shrijesh Pokharel covering username discovery, file-based access, backup extraction, credential cracking, and ISPConfig exploitation." />
+  <link rel="canonical" href="https://shrijesh.com.np/writeups/nocturnal.html" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../writeups.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <main style="max-width: 960px; margin: 0 auto; padding: 4rem 1.5rem 3rem;">
+    <p class="mono"><a href="/">Home</a> / <a href="/writeups/index.html">Writeups</a></p>
+    <h1 class="section-title">Nocturnal</h1>
+    <p class="section-sub">Authentication discovery, backup parsing, and a dashboard path to root.</p>
+
+    <section style="margin-top: 2rem; display: grid; gap: 1rem;">
+      <p>Start with a service scan against the host. The target exposes the usual web and SSH services, so I added the hostname to <span class="mono">/etc/hosts</span> and registered an account on the application.</p>
+      <p>The application shows uploaded files through a <span class="mono">view.php</span> flow. I noticed that the username parameter changes the output, so I used <span class="mono">ffuf</span> with the session cookie to discover a valid username, <span class="mono">amanda</span>.</p>
+      <p>From there, I downloaded the file, found the password used for the backup archive, and extracted the backup directory. That exposed a database backup with a hash for the user <span class="mono">tobias</span>, which I cracked and then used over SSH.</p>
+      <p>With user access, I identified an internal service on port 8080 and forwarded it locally with SSH. The dashboard used admin credentials with the recovered password, and additional research led to an ISPConfig path that ultimately yielded root-level access.</p>
+      <p class="mono">Key sequence: nmap -sV -sC &rarr; /etc/hosts &rarr; ffuf username discovery &rarr; backup extraction &rarr; hash cracking &rarr; ssh tobias &rarr; ssh -L 8080 &rarr; ISPConfig path</p>
+    </section>
+
+    <p style="margin-top: 2rem;"><a href="/writeups/index.html">Back to writeups</a></p>
+  </main>
+  <script src="../script.js"></script>
+</body>
+</html>

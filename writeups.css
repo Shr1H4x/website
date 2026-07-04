@@ -1,0 +1,127 @@
+:root {
+  --writeup-bg: radial-gradient(circle at top, rgba(0, 255, 135, 0.08), transparent 34%), linear-gradient(180deg, #090909 0%, #101010 100%);
+  --writeup-panel: rgba(255, 255, 255, 0.035);
+  --writeup-panel-strong: rgba(255, 255, 255, 0.06);
+  --writeup-border: rgba(255, 255, 255, 0.09);
+}
+
+body {
+  background: var(--writeup-bg);
+}
+
+body > main {
+  width: min(980px, calc(100% - 2rem)) !important;
+  max-width: 980px !important;
+  margin: 5.25rem auto 3rem !important;
+  padding: 2rem !important;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)) !important;
+  border: 1px solid var(--writeup-border) !important;
+  border-radius: 28px !important;
+  box-shadow: 0 22px 90px rgba(0,0,0,0.35) !important;
+  backdrop-filter: blur(10px);
+}
+
+body > main > p.mono:first-child {
+  color: var(--muted);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+}
+
+body > main > p.mono:first-child a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+body > main > .section-title,
+body > main > h1.section-title {
+  font-size: clamp(2.1rem, 5vw, 4.1rem);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  margin: 0.6rem 0 0.9rem;
+}
+
+body > main > .section-sub {
+  max-width: 70ch;
+  color: var(--muted);
+  font-size: 1.02rem;
+  margin-bottom: 1.6rem;
+}
+
+body > main > section {
+  margin-top: 1.6rem !important;
+  padding: 1.25rem 0 0;
+  border-top: 1px solid var(--writeup-border);
+}
+
+body > main p,
+body > main li {
+  max-width: 74ch;
+}
+
+body > main p + p,
+body > main p + ul,
+body > main ul + p {
+  margin-top: 0.9rem;
+}
+
+body > main ul {
+  display: grid;
+  gap: 0.8rem;
+  padding-left: 1.1rem;
+}
+
+body > main a {
+  color: var(--text);
+}
+
+body > main a:hover {
+  color: var(--accent);
+}
+
+body > main pre {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  background: var(--writeup-panel);
+  border: 1px solid var(--writeup-border);
+  border-radius: 18px;
+  overflow-x: auto;
+  color: var(--text);
+}
+
+body > main code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+}
+
+body > main pre code {
+  white-space: pre-wrap;
+}
+
+body > main .section-sub,
+body > main p,
+body > main li {
+  font-size: 1rem;
+}
+
+body > main .mono {
+  color: var(--accent);
+}
+
+body > main > p:last-child {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--writeup-border);
+}
+
+@media (max-width: 720px) {
+  body > main {
+    margin: 4.5rem auto 2rem !important;
+    padding: 1.4rem !important;
+    border-radius: 22px !important;
+  }
+
+  body > main > .section-title,
+  body > main > h1.section-title {
+    font-size: clamp(1.9rem, 11vw, 3rem);
+  }
+}

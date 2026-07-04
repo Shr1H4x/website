@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTB SEA Writeup | Shrijesh Pokharel (Shr1H4x)</title>
+  <meta name="description" content="Hack The Box SEA writeup by Shrijesh Pokharel covering HTTP and FTP discovery, WonderCMS exploitation, credential recovery, and local port forwarding." />
+  <link rel="canonical" href="https://shrijesh.com.np/writeups/htb-sea.html" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../writeups.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <main style="max-width: 960px; margin: 0 auto; padding: 4rem 1.5rem 3rem;">
+    <p class="mono"><a href="/">Home</a> / <a href="/writeups/index.html">Writeups</a></p>
+    <h1 class="section-title">HTB SEA</h1>
+    <p class="section-sub">WonderCMS discovery, CVE-based shell access, and a log analysis path to root.</p>
+
+    <section style="margin-top: 2rem; display: grid; gap: 1rem;">
+      <p>SEA begins with a standard Nmap scan that exposes ports 80, 22, and 21. Web enumeration against the HTTP service leads to a contact page and additional paths such as <span class="mono">LICENSE</span> and <span class="mono">version</span> after running Feroxbuster.</p>
+      <p>The site references WonderCMS, which narrows the attack surface. I used the CVE-2023-41425 path to trigger code execution via the contact page and connected back with a listener.</p>
+      <p>Inside the shell, <span class="mono">/var/www/database.js</span> exposed encrypted credential material. I also confirmed the local account list through <span class="mono">/etc/passwd</span>, cracked the user password, and logged in as <span class="mono">amay</span>.</p>
+      <p>Privilege escalation came from a dashboard accessible on an internal port. I forwarded the service back to my machine with SSH local port forwarding, inspected the logs and request handling in the browser, then adjusted the <span class="mono">log_file</span> parameter to expose the root flag.</p>
+      <p class="mono">Key sequence: nmap -sC -sV &rarr; feroxbuster &rarr; WonderCMS/CVE-2023-41425 &rarr; database.js &rarr; crack hash &rarr; ssh amay &rarr; ssh -L &rarr; log_file manipulation</p>
+    </section>
+
+    <p style="margin-top: 2rem;"><a href="/writeups/index.html">Back to writeups</a></p>
+  </main>
+  <script src="../script.js"></script>
+</body>
+</html>
