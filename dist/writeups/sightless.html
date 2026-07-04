@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sightless Writeup | Shrijesh Pokharel (Shr1H4x)</title>
+  <meta name="description" content="Hack The Box Sightless writeup by Shrijesh Pokharel covering SQLPad, CVE-2022-0944, shell access, user hash cracking, port forwarding, and Froxlor escalation." />
+  <link rel="canonical" href="https://shrijesh.com.np/writeups/sightless.html" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../writeups.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <main style="max-width: 960px; margin: 0 auto; padding: 4rem 1.5rem 3rem;">
+    <p class="mono"><a href="/">Home</a> / <a href="/writeups/index.html">Writeups</a></p>
+    <h1 class="section-title">Sightless</h1>
+    <p class="section-sub">SQLPad exposure, CVE-2022-0944 exploitation, and a Froxlor pivot to root.</p>
+
+    <section style="margin-top: 2rem; display: grid; gap: 1rem;">
+      <p>After connecting to the VPN and identifying the target at <span class="mono">10.10.11.32</span>, I added the hostname to <span class="mono">/etc/hosts</span> and scanned the box with Nmap. That led to a web application exposing SQLPad.</p>
+      <p>Using the CVE-2022-0944 exploit path, I executed the provided Python proof of concept and captured a shell by listening on my local port <span class="mono">8888</span>. Once inside, I inspected <span class="mono">/var/lib/sqlpad</span> and dumped <span class="mono">/etc/shadow</span> to recover the user credentials.</p>
+      <p>With the cracked password, I logged in as <span class="mono">michael</span>. From there, I enumerated local services, forwarded the internal dashboard ports with SSH, and discovered a Froxlor login page.</p>
+      <p>I then inspected the Chromium debugging interface, recovered the Froxlor admin credentials, and used the panel’s PHP-FPM functionality to create a file path that exposed root’s SSH private key. After fixing the permissions, I used the key to log in as root and retrieve the final flag.</p>
+      <p class="mono">Key sequence: openvpn &rarr; nmap -sSVC &rarr; SQLPad &rarr; CVE-2022-0944 &rarr; /etc/shadow &rarr; ssh michael &rarr; ssh -L &rarr; Froxlor &rarr; SSH key extraction</p>
+    </section>
+
+    <p style="margin-top: 2rem;"><a href="/writeups/index.html">Back to writeups</a></p>
+  </main>
+  <script src="../script.js"></script>
+</body>
+</html>

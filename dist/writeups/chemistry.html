@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chemistry Writeup | Shrijesh Pokharel (Shr1H4x)</title>
+  <meta name="description" content="Hack The Box Chemistry writeup by Shrijesh Pokharel covering CIF exploitation, database discovery, SSH pivoting, and path traversal to root." />
+  <link rel="canonical" href="https://shrijesh.com.np/writeups/chemistry.html" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../writeups.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <main style="max-width: 960px; margin: 0 auto; padding: 4rem 1.5rem 3rem;">
+    <p class="mono"><a href="/">Home</a> / <a href="/writeups/index.html">Writeups</a></p>
+    <h1 class="section-title">Chemistry</h1>
+    <p class="section-sub">Application discovery, CIF abuse, database inspection, and a forwarded dashboard path.</p>
+
+    <section style="margin-top: 2rem; display: grid; gap: 1rem;">
+      <p>Hello. I’m Shrijesh Pokharel. Here is my Chemistry - HackTheBox writeup.</p>
+      <p>A network scan exposes ports 5000 and 22. The web app requires registration, and after clicking through to the next page I could download a CIF file for closer inspection.</p>
+      <p>I modified the CIF input and used the vulnerability path to obtain a shell as <span class="mono">app@chemistry</span>. From there I explored <span class="mono">instance/database.db</span> with SQLite, found user details, and cracked the password for <span class="mono">rosa</span>.</p>
+      <p>SSH access as <span class="mono">rosa</span> gave me the user flag. Later, <span class="mono">linpeas</span> highlighted an internal service on port 8080, so I forwarded it locally with SSH and inspected the dashboard from my browser.</p>
+      <p>That path led into a path-traversal style exploit against the local service, which exposed <span class="mono">root.txt</span> and completed the machine.</p>
+      <p class="mono">Key sequence: nmap -sC -sV &rarr; CIF inspection &rarr; shell as app &rarr; sqlite3 database.db &rarr; crack rosa &rarr; ssh rosa &rarr; ssh -L 8080 &rarr; path traversal</p>
+    </section>
+
+    <p style="margin-top: 2rem;"><a href="/writeups/index.html">Back to writeups</a></p>
+  </main>
+  <script src="../script.js"></script>
+</body>
+</html>

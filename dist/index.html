@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shrijesh Pokharel (Shr1H4x) | Jr Penetration Tester & Security Researcher in Kathmandu, Nepal</title>
+  <meta name="description" content="Shrijesh Pokharel (Shr1H4x) is a Jr Penetration Tester and security researcher in Kathmandu, Nepal, active on TryHackMe and Hack The Box with hands-on work in web exploitation, malware analysis, reverse engineering, and security tooling." />
+  <link rel="canonical" href="https://shrijesh.com.np/" />
+  <meta property="og:title" content="Shrijesh Pokharel (Shr1H4x) | Jr Penetration Tester & Security Researcher in Kathmandu, Nepal" />
+  <meta property="og:description" content="Shrijesh Pokharel (Shr1H4x) is a Jr Penetration Tester and security researcher in Kathmandu, Nepal, active on TryHackMe and Hack The Box with hands-on work in web exploitation, malware analysis, reverse engineering, and security tooling." />
+  <meta property="og:image" content="https://shrijesh.com.np/preview.png" />
+  <meta property="og:url" content="https://shrijesh.com.np/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Shrijesh Pokharel (Shr1H4x) | Jr Penetration Tester & Security Researcher in Kathmandu, Nepal" />
+  <meta name="twitter:description" content="Shrijesh Pokharel (Shr1H4x) is a Jr Penetration Tester and security researcher in Kathmandu, Nepal, active on TryHackMe and Hack The Box with hands-on work in web exploitation, malware analysis, reverse engineering, and security tooling." />
+  <meta name="twitter:image" content="https://shrijesh.com.np/preview.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Shrijesh Pokharel",
+    "alternateName": "Shr1H4x",
+    "url": "https://shrijesh.com.np/",
+    "sameAs": [
+      "https://github.com/Shr1H4x",
+      "https://tryhackme.com/p/Shr1H4x"
+    ],
+    "jobTitle": "Penetration Tester and Security Researcher",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Coventry University"
+    }
+  }
+  </script>
+  <!-- TODO: supply a 1200x630 preview.png at the site root for social sharing cards. -->
+  <link rel="icon" type="image/x-icon" href="image/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="image/favicon.svg" />
+  <link rel="apple-touch-icon" href="image/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="noise"></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" data-text="SHRIHAX">SHR<span class="accent">I</span>HAX</a>
+      <ul class="nav-links">
+        <li><a href="#about"    data-nav>about</a></li>
+        <li><a href="#skills"   data-nav>skills</a></li>
+        <li><a href="#projects" data-nav>projects</a></li>
+        <li><a href="#writeups" data-nav>writeups</a></li>
+        <li><a href="#labs"     data-nav>labs</a></li>
+        <li><a href="#contact"  data-nav>contact</a></li>
+      </ul>
+      <a href="https://github.com/Shr1H4x" target="_blank" rel="noopener" class="nav-cta">
+        <span>GitHub</span>
+        <i data-lucide="arrow-up-right"></i>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#about">about</a>
+      <a href="#skills">skills</a>
+      <a href="#projects">projects</a>
+      <a href="#writeups">writeups</a>
+      <a href="#labs">labs</a>
+      <a href="#contact">contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-grid">
+      <div class="hero-left">
+
+        <div class="hero-badge" data-reveal>
+          <span class="badge-dot"></span>
+          <span class="mono">Available for employment &amp; collaborations</span>
+        </div>
+
+        <h1 class="hero-name" data-reveal>
+          Shrijesh<br/>
+          <span class="hero-name-alt">Pokharel</span>
+        </h1>
+
+        <div class="hero-role" data-reveal>
+          <span class="mono accent">&gt;</span>
+          <span id="roleText"></span>
+          <span class="blink">_</span>
+        </div>
+
+        <p class="hero-desc" data-reveal>
+          Security researcher. Ethical hacker. Tool builder. Pursuing BSc (Hons) Cyber Security &amp; Ethical Hacking at Coventry University via Softwarica College — Kathmandu, Nepal.
+        </p>
+
+        <div class="hero-actions" data-reveal>
+          <a href="#projects" class="btn-primary">
+            View Projects
+            <i data-lucide="arrow-up-right"></i>
+          </a>
+          <a href="#contact" class="btn-secondary">
+            <i data-lucide="mail"></i>
+            Contact Me
+          </a>
+        </div>
+
+        <div class="hero-stats" data-reveal>
+          <div class="stat">
+            <span class="stat-num accent">17+</span>
+            <span class="stat-label mono">Projects</span>
+          </div>
+          <div class="stat-div"></div>
+          <div class="stat">
+            <span class="stat-num accent">20+</span>
+            <span class="stat-label mono">CTF Challenges</span>
+          </div>
+          <div class="stat-div"></div>
+          <div class="stat">
+            <span class="stat-num accent">5+</span>
+            <span class="stat-label mono">Languages</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="hero-right" data-reveal>
+        <div class="hero-img-wrap">
+          <div class="hero-img-glow"></div>
+          <img src="image/Shrijesh.png" alt="Shrijesh Pokharel" class="hero-img" loading="eager" />
+          <div class="hero-img-border"></div>
+          <div class="hero-scan"></div>
+        </div>
+        <div class="hero-terminal">
+          <div class="terminal-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="terminal-body">
+            <p class="t-line"><span class="t-prompt">shri@kali</span><span class="t-sep">:</span><span class="t-path">~</span><span class="t-sep">$</span> <span class="t-cmd">whoami</span></p>
+            <p class="t-out">shrijesh pokharel — ethical hacker</p>
+            <p class="t-line"><span class="t-prompt">shri@kali</span><span class="t-sep">:</span><span class="t-path">~</span><span class="t-sep">$</span> <span class="t-cmd">cat skills.txt</span></p>
+            <p class="t-out">pentest | malware-analysis | cryptography</p>
+            <p class="t-line"><span class="t-prompt">shri@kali</span><span class="t-sep">:</span><span class="t-path">~</span><span class="t-sep">$</span> <span class="t-cmd">nmap -sV shrijesh.com.np</span></p>
+            <p class="t-out">PORT    STATE SERVICE  VERSION</p>
+            <p class="t-out">80/tcp  open  http     <span class="accent">ShriHax Portfolio</span></p>
+            <p class="t-out">443/tcp open  ssl/https <span class="accent">Secured ✓</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span class="mono">scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-label" data-reveal>
+        <span class="mono accent">01</span>
+        <span class="label-line"></span>
+        <span class="mono">about_me.txt</span>
+      </div>
+      <div class="about-grid">
+        <div class="about-text" data-reveal>
+          <h2 class="section-title">Breaking things<br/><em>ethically</em> since 2021</h2>
+          <p>I'm an aspiring cybersecurity professional who lives at the intersection of offensive security and software development. I spend my time building tools, owning machines on HTB and TryHackMe, and diving deep into malware analysis and reverse engineering.</p>
+          <p>Currently pursuing my BSc (Hons) in Cyber Security &amp; Ethical Hacking at <strong>Coventry University</strong> through <strong>Softwarica College</strong> in Kathmandu. My academic work spans penetration testing, security auditing, reverse engineering, and security management — all backed by real lab engagements.</p>
+          <p>I build because I learn better that way. Every tool I write, every machine I root, every report I produce — it all stacks into a picture of someone who doesn't just study security, but does it.</p>
+          <div class="about-links">
+            <a href="https://www.linkedin.com/in/shrijesh-pokharel/" target="_blank" rel="noopener" class="about-link">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="2" stroke="currentColor" stroke-width="1.2" fill="none" />
+                <path d="M6.94 9.5H4.62V18h2.32V9.5zM5.78 7.9a1.34 1.34 0 110-2.68 1.34 1.34 0 010 2.68zM11.1 18h2.32v-4.1c0-1.02.02-2.33 1.5-2.33 1.47 0 1.5 1.37 1.5 2.41V18H18.7v-5.1c0-2.74-1.46-3.18-2.71-3.18-1.23 0-1.78.68-2.09 1.16v-.99H11.1c.03.64 0 8.12 0 8.12z" fill="currentColor" />
+              </svg>
+              LinkedIn
+            </a>
+            <a href="https://github.com/Shr1H4x" target="_blank" rel="noopener" class="about-link">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M12 .3C5.37.3 0 5.67 0 12.29c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.73-4.04-1.6-4.04-1.6-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.84 2.8 1.31 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.94 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013.01-.4c1.02.01 2.04.14 3.01.4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.64-5.48 5.93.43.37.82 1.1.82 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.21.7.83.58C20.56 22.09 24 17.59 24 12.29 24 5.67 18.63.3 12 .3z" />
+              </svg>
+              GitHub
+            </a>
+            <a href="mailto:shrijeshpokharel@proton.me" class="about-link">
+              <i data-lucide="mail"></i> Email
+            </a>
+          </div>
+        </div>
+        <div class="about-img-col" data-reveal>
+          <div class="edu-card">
+            <div class="edu-icon">🎓</div>
+            <div>
+              <p class="edu-title">BSc (Hons) Cyber Security &amp; Ethical Hacking</p>
+              <p class="edu-sub mono">Coventry University × Softwarica College</p>
+              <p class="edu-loc mono accent">Kathmandu, Nepal</p>
+            </div>
+          </div>
+          <div class="edu-card" style="margin-top:12px;">
+            <div class="edu-icon">🎓</div>
+            <div>
+              <p class="edu-title">Higher Secondary Education</p>
+              <p class="edu-sub mono">Kathmandu Model Secondary School</p>
+              <p class="edu-loc mono accent">Lalitpur, Nepal</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-inner">
+      <div class="section-label" data-reveal>
+        <span class="mono accent">02</span>
+        <span class="label-line"></span>
+        <span class="mono">skills_matrix.json</span>
+      </div>
+      <h2 class="section-title" data-reveal>Technical Arsenal</h2>
+
+      <div class="skills-grid" data-reveal>
+
+        <div class="skill-domain">
+          <div class="skill-domain-header">
+            <span class="domain-icon">⚔️</span>
+            <h3 class="mono">Offensive Security</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <span class="skill-name">Penetration Testing</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:65%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Vulnerability Assessment</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:70%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Malware Analysis</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:55%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Reverse Engineering</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:60%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Network Security</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:55%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-domain">
+          <div class="skill-domain-header">
+            <span class="domain-icon">🔐</span>
+            <h3 class="mono">Cryptography &amp; Dev</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <span class="skill-name">Python</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:68%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">C / C++</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:62%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Bash Scripting</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:62%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Cryptography (AES / RSA / ECC)</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:56%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">PHP / MySQL</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:55%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-domain">
+          <div class="skill-domain-header">
+            <span class="domain-icon">🛠️</span>
+            <h3 class="mono">Tools &amp; Platforms</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Kali Linux</span>
+            <span class="skill-tag">Metasploit</span>
+            <span class="skill-tag">Nmap</span>
+            <span class="skill-tag">Wireshark</span>
+            <span class="skill-tag">Burp Suite</span>
+            <span class="skill-tag">x32dbg</span>
+            <span class="skill-tag">YARA</span>
+            <span class="skill-tag">Ghidra</span>
+            <span class="skill-tag">Hydra</span>
+            <span class="skill-tag">LinPEAS</span>
+            <span class="skill-tag">CeWL</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">VirtualBox</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">HTB</span>
+            <span class="skill-tag">TryHackMe</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-inner">
+      <div class="section-label" data-reveal>
+        <span class="mono accent">03</span>
+        <span class="label-line"></span>
+        <span class="mono">projects.sh</span>
+      </div>
+      <h2 class="section-title" data-reveal>Featured Work</h2>
+
+      
+      <!-- PROJECTS_STATIC_START -->
+      <div class="featured-projects" id="featuredProjectsGrid" data-reveal>
+
+        <div class="project-featured">
+          <div class="project-featured-meta">
+            <span class="proj-num mono accent">01</span>
+            <div class="proj-tags">
+              <span class="proj-tag sm tag-plain">IP Spoof</span><span class="proj-tag sm tag-plain">OPSEC</span><span class="proj-tag accent-tag">Featured</span>
+            </div>
+          </div>
+          <h3 class="proj-title">X Change</h3>
+          <p class="proj-desc">personal IP&amp;MAC changer</p>
+          <div class="proj-links">
+            <a href="https://github.com/Shr1H4x/X_Change" target="_blank" rel="noopener" class="proj-link">
+              View Code <i data-lucide="arrow-up-right"></i>
+            </a>
+          </div>
+          <span class="proj-date mono">April 2026</span>
+        </div>
+
+        <div class="project-featured">
+          <div class="project-featured-meta">
+            <span class="proj-num mono accent">02</span>
+            <div class="proj-tags">
+              <span class="proj-tag sm tag-plain">Encryption</span><span class="proj-tag sm tag-plain">File Vault</span><span class="proj-tag accent-tag">Featured</span>
+            </div>
+          </div>
+          <h3 class="proj-title">Cryptex Rolling file vault</h3>
+          <p class="proj-desc">Personal vault with file encryption features</p>
+          <div class="proj-links">
+            <a href="https://github.com/Shr1H4x/Cryptex-Rolling-file-vault" target="_blank" rel="noopener" class="proj-link">
+              View Code <i data-lucide="arrow-up-right"></i>
+            </a>
+          </div>
+          <span class="proj-date mono">February 2026</span>
+        </div>
+
+        <div class="project-featured">
+          <div class="project-featured-meta">
+            <span class="proj-num mono accent">03</span>
+            <div class="proj-tags">
+              <span class="proj-tag sm tag-plain">File Transfer</span><span class="proj-tag sm tag-plain">Wireless</span><span class="proj-tag accent-tag">Featured</span>
+            </div>
+          </div>
+          <h3 class="proj-title">NetToss Wireless File Transfer</h3>
+          <p class="proj-desc">File transfer over internet and wifi direct</p>
+          <div class="proj-links">
+            <a href="https://github.com/Shr1H4x/NetToss-Wireless_File_Transfer" target="_blank" rel="noopener" class="proj-link">
+              View Code <i data-lucide="arrow-up-right"></i>
+            </a>
+          </div>
+          <span class="proj-date mono">January 2026</span>
+        </div>
+      </div>
+
+      <div class="projects-divider" data-reveal>
+        <span class="mono">all_projects</span>
+        <div class="divider-line"></div>
+      </div>
+
+      <div class="projects-grid" id="githubProjectsGrid" data-reveal>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">🔧</span>
+              <span class="lang-badge-icon">SH</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag sm tag-plain">Automation</span><span class="proj-tag sm tag-plain">Linux</span></div>
+          </div>
+          <h4 class="pc-title">sysmaint</h4>
+          <p class="pc-desc">Interactive Zsh maintenance tool for Debian/Kali: apt update/upgrade, clean progress UI, logs, snapshots.</p>
+          <a href="https://github.com/Shr1H4x/sysmaint" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Apr 2026</span>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">📁</span>
+              <span class="lang-badge-icon">SH</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag sm tag-plain">Shell</span><span class="proj-tag sm tag-plain">Open Source</span></div>
+          </div>
+          <h4 class="pc-title">Nvidia GPU setup Kali</h4>
+          <p class="pc-desc">Nvidia GPU installation and setup for kali linux </p>
+          <a href="https://github.com/Shr1H4x/Nvidia-GPU-setup-Kali" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Mar 2026</span>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">📁</span>
+              <span class="lang-badge-icon">SH</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag sm tag-plain">Shell</span><span class="proj-tag sm tag-plain">Open Source</span></div>
+          </div>
+          <h4 class="pc-title">inet</h4>
+          <p class="pc-desc">simple IP shower</p>
+          <a href="https://github.com/Shr1H4x/inet" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Mar 2026</span>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">🐚</span>
+              <span class="lang-badge-icon">SH</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag sm tag-plain">Recon</span><span class="proj-tag sm tag-plain">Port Scan</span></div>
+          </div>
+          <h4 class="pc-title">NCPD</h4>
+          <p class="pc-desc">No description provided.</p>
+          <a href="https://github.com/Shr1H4x/NCPD" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Oct 2025</span>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">📥</span>
+              <span class="lang-badge-icon">PY</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag sm tag-plain">Automation</span><span class="proj-tag sm tag-plain">Scraping</span></div>
+          </div>
+          <h4 class="pc-title">YouTube Downloader</h4>
+          <p class="pc-desc">No description provided.</p>
+          <a href="https://github.com/Shr1H4x/YouTube-Downloader" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Jun 2025</span>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">🔗</span>
+              <span class="lang-badge-icon">PY</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag sm tag-plain">Threat Intel</span><span class="proj-tag sm tag-plain">Blue Team</span></div>
+          </div>
+          <h4 class="pc-title">URL Defanger</h4>
+          <p class="pc-desc">No description provided.</p>
+          <a href="https://github.com/Shr1H4x/URL-Defanger" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">May 2025</span>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">🌐</span>
+              <span class="lang-badge-icon">PY</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag sm tag-plain">Recon</span><span class="proj-tag sm tag-plain">Network</span></div>
+          </div>
+          <h4 class="pc-title">port scanner GUI</h4>
+          <p class="pc-desc">No description provided.</p>
+          <a href="https://github.com/Shr1H4x/port_scanner_GUI" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Mar 2025</span>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">🕷️</span>
+              <span class="lang-badge-icon">PY</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag sm tag-plain">OSINT</span><span class="proj-tag sm tag-plain">Crawler</span></div>
+          </div>
+          <h4 class="pc-title">web crawler GUI</h4>
+          <p class="pc-desc">No description provided.</p>
+          <a href="https://github.com/Shr1H4x/web_crawler_GUI" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Mar 2025</span>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">🎓</span>
+              <span class="lang-badge-icon">PHP</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag sm tag-plain">Full Stack</span><span class="proj-tag sm tag-plain">Database</span></div>
+          </div>
+          <h4 class="pc-title">Student Management System</h4>
+          <p class="pc-desc">Student Management System using PHP, SQL, CSS</p>
+          <a href="https://github.com/Shr1H4x/Student-Management-System" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Aug 2024</span>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">🔒</span>
+              <span class="lang-badge-icon">SH</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag sm tag-plain">Encryption</span><span class="proj-tag sm tag-plain">Bash</span></div>
+          </div>
+          <h4 class="pc-title">cryptography in linux</h4>
+          <p class="pc-desc">No description provided.</p>
+          <a href="https://github.com/Shr1H4x/cryptography-in-linux" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Mar 2024</span>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">🌐</span>
+              <span class="lang-badge-icon">PY</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag sm tag-plain">Recon</span><span class="proj-tag sm tag-plain">Network</span></div>
+          </div>
+          <h4 class="pc-title">port scanner</h4>
+          <p class="pc-desc">an network port scanning tool using python</p>
+          <a href="https://github.com/Shr1H4x/port-scanner" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Feb 2024</span>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">🔒</span>
+              <span class="lang-badge-icon">C</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag sm tag-plain">Encryption</span><span class="proj-tag sm tag-plain">Low Level</span></div>
+          </div>
+          <h4 class="pc-title">cryptography</h4>
+          <p class="pc-desc">An Cryptography code using c language only</p>
+          <a href="https://github.com/Shr1H4x/cryptography" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Feb 2024</span>
+        </div>
+      </div>
+      <!-- PROJECTS_STATIC_END -->
+
+      <div class="projects-cta" data-reveal>
+        <a href="https://github.com/Shr1H4x" target="_blank" rel="noopener" class="btn-secondary" id="githubRepoCount">
+          View all 15 repos on GitHub
+          <i data-lucide="arrow-up-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WRITEUPS -->
+  <section id="writeups">
+    <div class="section-inner">
+      <div class="section-label" data-reveal>
+        <span class="mono accent">04</span>
+        <span class="label-line"></span>
+        <span class="mono">writeups.md</span>
+      </div>
+      <h2 class="section-title" data-reveal>Writeups</h2>
+      <p class="section-sub" data-reveal>Static placeholders for detailed technical notes. Each page is linked here and will be filled with the full analysis when you provide the final copy.</p>
+
+      <div class="contact-grid" data-reveal>
+        <a href="/writeups/index.html" class="contact-card">
+          <div class="contact-icon"><i data-lucide="book-open"></i></div>
+          <div>
+            <p class="contact-label mono">Writeups Hub</p>
+            <p class="contact-val">Browse all technical notes</p>
+          </div>
+        </a>        <a href="/writeups/htb-sea.html" class="contact-card">
+          <div class="contact-icon"><i data-lucide="file-text"></i></div>
+          <div>
+            <p class="contact-label mono">HTB SEA</p>
+            <p class="contact-val">Hack The Box machine notes</p>
+          </div>
+        </a>
+        <a href="/writeups/nocturnal.html" class="contact-card">
+          <div class="contact-icon"><i data-lucide="file-text"></i></div>
+          <div>
+            <p class="contact-label mono">Nocturnal</p>
+            <p class="contact-val">Hack The Box machine notes</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LABS -->
+  <section id="labs">
+    <div class="section-inner">
+      <div class="section-label" data-reveal>
+        <span class="mono accent">04</span>
+        <span class="label-line"></span>
+        <span class="mono">lab_engagements.log</span>
+      </div>
+      <h2 class="section-title" data-reveal>Labs &amp; Engagements</h2>
+      <p class="section-sub" data-reveal>Real-world simulations mapped to MITRE ATT&amp;CK. Documented academic lab engagements — not production targets.</p>
+
+      <div class="labs-table-wrap" data-reveal>
+        <table class="labs-table">
+          <thead>
+            <tr>
+              <th class="mono">Machine / Target</th>
+              <th class="mono">Platform</th>
+              <th class="mono">CVE / Technique</th>
+              <th class="mono">Tools</th>
+              <th class="mono">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Alert</strong> <span class="mono dim">10.10.11.44</span></td>
+              <td>HackTheBox</td>
+              <td><span class="cve-tag">XSS → RCE</span></td>
+              <td class="mono dim">Nmap, Burp, LinPEAS</td>
+              <td><span class="status-badge owned">Owned ✓</span></td>
+            </tr>
+            <tr>
+              <td><strong>Lampiao</strong></td>
+              <td>VulnHub</td>
+              <td>
+                <span class="cve-tag">CVE-2018-7600</span>
+                <span class="cve-tag">CVE-2016-5195</span>
+              </td>
+              <td class="mono dim">Nmap, Metasploit, Hydra, CeWL, DirtyCow</td>
+              <td><span class="status-badge owned">Owned ✓</span></td>
+            </tr>
+            <tr>
+              <td><strong>Emotet Epoch 2</strong></td>
+              <td>Malware Lab</td>
+              <td><span class="cve-tag">Dynamic Analysis</span></td>
+              <td class="mono dim">x32dbg, YARA, REMnux</td>
+              <td><span class="status-badge analyzed">Analyzed ✓</span></td>
+            </tr>
+            <tr>
+              <td><strong>RAT / Infostealer</strong></td>
+              <td>Malware Lab</td>
+              <td><span class="cve-tag">Static + Dynamic</span></td>
+              <td class="mono dim">YARA (8 rules), PEiD</td>
+              <td><span class="status-badge analyzed">Analyzed ✓</span></td>
+            </tr>
+            <tr>
+              <td><strong>SEA</strong></td>
+              <td>HackTheBox</td>
+              <td><span class="cve-tag">CVE-2023-41425</span></td>
+              <td class="mono dim">Nmap, Hydra, SQL, log-filtration</td>
+              <td><span class="status-badge owned">Owned ✓</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="thm-badge-wrap" data-reveal>
+        <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=2088043" style="border:none;" scrolling="no" loading="lazy"></iframe>
+      </div>
+
+      <div class="labs-platforms" data-reveal>
+        <a href="https://tryhackme.com/p/Shr1H4x" target="_blank" rel="noopener" class="platform-card">
+          <img src="https://shrijesh.com.np/image/thm.png" alt="TryHackMe" width="32" height="32" style="border-radius:6px;" />
+          <div>
+            <p class="platform-name">TryHackMe</p>
+            <p class="platform-sub mono">Shr1H4x</p>
+          </div>
+          <i data-lucide="arrow-up-right"></i>
+        </a>
+        <a href="https://app.hackthebox.com/users/2106835" target="_blank" rel="noopener" class="platform-card">
+          <div class="htb-icon">HTB</div>
+          <div>
+            <p class="platform-name">HackTheBox</p>
+            <p class="platform-sub mono">ShriHax</p>
+          </div>
+          <i data-lucide="arrow-up-right"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-label" data-reveal>
+        <span class="mono accent">05</span>
+        <span class="label-line"></span>
+        <span class="mono">contact.sh</span>
+      </div>
+      <h2 class="section-title" data-reveal>Let's Connect</h2>
+      <p class="section-sub" data-reveal>Open to internships, security collaborations, and interesting projects. Drop a message.</p>
+
+      <div class="contact-grid" data-reveal>
+        <div class="contact-links">
+
+          <a href="mailto:shrijeshpokharel@proton.me" class="contact-card">
+            <div class="contact-icon"><i data-lucide="mail"></i></div>
+            <div>
+              <p class="contact-label mono">Email</p>
+              <p class="contact-val">shrijeshpokharel@proton.me</p>
+            </div>
+          </a>
+
+          <a href="https://www.linkedin.com/in/shrijesh-pokharel/" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="2" stroke="currentColor" stroke-width="1.2" fill="none" />
+                <path d="M6.94 9.5H4.62V18h2.32V9.5zM5.78 7.9a1.34 1.34 0 110-2.68 1.34 1.34 0 010 2.68zM11.1 18h2.32v-4.1c0-1.02.02-2.33 1.5-2.33 1.47 0 1.5 1.37 1.5 2.41V18H18.7v-5.1c0-2.74-1.46-3.18-2.71-3.18-1.23 0-1.78.68-2.09 1.16v-.99H11.1c.03.64 0 8.12 0 8.12z" fill="currentColor" />
+              </svg>
+            </div>
+            <div>
+              <p class="contact-label mono">LinkedIn</p>
+              <p class="contact-val">Shrijesh Pokharel</p>
+            </div>
+          </a>
+
+          <a href="https://github.com/Shr1H4x" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M12 .3C5.37.3 0 5.67 0 12.29c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.73-4.04-1.6-4.04-1.6-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.84 2.8 1.31 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.94 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013.01-.4c1.02.01 2.04.14 3.01.4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.64-5.48 5.93.43.37.82 1.1.82 2.22 0 1.6-.02 2.89-.02 3.29 0 .32.21.7.83.58C20.56 22.09 24 17.59 24 12.29 24 5.67 18.63.3 12 .3z" />
+              </svg>
+            </div>
+            <div>
+              <p class="contact-label mono">GitHub</p>
+              <p class="contact-val">Shr1H4x</p>
+            </div>
+          </a>
+
+        </div>
+
+        <div class="contact-terminal">
+          <div class="terminal-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="ct-body">
+            <p class="t-line"><span class="t-prompt">shri@kali</span><span class="t-sep">:</span><span class="t-path">~</span><span class="t-sep">$</span> <span class="t-cmd">ping shrijesh.com.np</span></p>
+            <p class="t-out">PING shrijesh.com.np: 56 data bytes</p>
+            <p class="t-out">64 bytes from shrijesh.com.np: icmp_seq=0 ttl=64 time=<span class="accent">2.1 ms</span></p>
+            <p class="t-out">&nbsp;</p>
+            <p class="t-line"><span class="t-prompt">shri@kali</span><span class="t-sep">:</span><span class="t-path">~</span><span class="t-sep">$</span> <span class="t-cmd">cat status.txt</span></p>
+            <p class="t-out"><span class="accent">✓</span> Open to opportunities</p>
+            <p class="t-out"><span class="accent">✓</span> Open to security collabs</p>
+            <p class="t-out"><span class="accent">✓</span> Based in Kathmandu, Nepal</p>
+            <p class="t-out"><span class="accent">✓</span> Response time: &lt; 24h</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">SHR<span class="accent">I</span>HAX</div>
+      <p class="footer-tagline mono">Securing digital landscapes — ethically.</p>
+      <div class="footer-links">
+        <a href="https://github.com/Shr1H4x" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/shrijesh-pokharel/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://tryhackme.com/p/Shr1H4x" target="_blank" rel="noopener">TryHackMe</a>
+        <a href="mailto:shrijeshpokharel@proton.me">Email</a>
+      </div>
+      <p class="footer-copy mono">© 2026 Shrijesh Pokharel. Built with intention.</p>
+    </div>
+  </footer>
+
+  <!-- Lucide Icons — loaded BEFORE script.js so lucide is defined -->
+  <script src="https://unpkg.com/lucide@1.23.0/dist/umd/lucide.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

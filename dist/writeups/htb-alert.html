@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTB Alert Writeup | Shrijesh Pokharel (Shr1H4x)</title>
+  <meta name="description" content="Hack The Box Alert writeup by Shrijesh Pokharel covering reconnaissance, script upload, credential retrieval, and reverse shell entry points." />
+  <link rel="canonical" href="https://shrijesh.com.np/writeups/htb-alert.html" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../writeups.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <main style="max-width: 960px; margin: 0 auto; padding: 4rem 1.5rem 3rem;">
+    <p class="mono"><a href="/">Home</a> / <a href="/writeups/index.html">Writeups</a></p>
+    <h1 class="section-title">HTB Alert</h1>
+    <p class="section-sub">From initial HTTP discovery to credential extraction and shell access.</p>
+
+    <section style="margin-top: 2rem; display: grid; gap: 1rem;">
+      <p>Hello. I’m Shrijesh Pokharel. Here is my Alert - HackTheBox writeup.</p>
+      <p>Start with a basic Nmap scan. The target exposes ports 80 and 22, so the first pass is web enumeration. Add the hostname to <span class="mono">/etc/hosts</span> and explore the site with a browser, curl, and directory discovery tooling such as Gobuster.</p>
+      <p>The directory scan suggests an upload or script-generation workflow. I wrote a custom <span class="mono">script.md</span> payload that matched the file-type restrictions, then opened a listener on port <span class="mono">8888</span> and uploaded the script through the site. Submitting the generated URL through the contact page triggered a response that contained encoded data.</p>
+      <p>After decoding that response, I recovered a username and password hash and used the credentials to log in over SSH. That provided the <span class="mono">user.txt</span> flag.</p>
+      <p>For privilege escalation, I searched <span class="mono">/opt/website-monitor/config</span> for sensitive files and then used a reverse-shell payload in the application path that referenced <span class="mono">config/file.php</span>. Once connected, I moved through the filesystem to <span class="mono">/root</span> and retrieved the root flag.</p>
+      <p class="mono">Key sequence: nmap -sV &rarr; /etc/hosts &rarr; gobuster &rarr; script.md upload &rarr; decode hash &rarr; SSH &rarr; config/file.php &rarr; root.txt</p>
+    </section>
+
+    <p style="margin-top: 2rem;"><a href="/writeups/index.html">Back to writeups</a></p>
+  </main>
+  <script src="../script.js"></script>
+</body>
+</html>
