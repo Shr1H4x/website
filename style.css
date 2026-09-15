@@ -231,13 +231,37 @@ h1 {
   padding: 4px 12px;
 }
 .sticky-nav a:hover {
-  background: linear-gradient(90deg, #e31b23, #ff8c00, #00aa00, #0048ba);
-  color: #fff;
-  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  background: var(--text);
+  color: var(--page);
+  text-shadow: none;
 }
 .sticky-nav a:active { border-style: inset; }
 .sticky-nav a:visited { color: var(--text); }
-.sticky-nav a:hover:visited { color: #fff; }
+.sticky-nav a:hover:visited { color: var(--page); }
+
+/* ------- retro action buttons (for standalone links) ------- */
+.btn {
+  display: inline-block;
+  background: var(--bg);
+  border: 2px outset var(--bevel-hi);
+  border-radius: 0;
+  color: var(--text);
+  text-decoration: none;
+  font-family: 'Syne', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 4px 12px;
+  margin: 2px 0;
+  line-height: 1.4;
+}
+.btn:visited { color: var(--text); }
+.btn:hover {
+  background: var(--text);
+  color: var(--page);
+  text-shadow: none;
+}
+.btn:hover:visited { color: var(--page); }
+.btn:active { border-style: inset; }
 
 /* ------- theme toggle button ------- */
 .theme-btn {
