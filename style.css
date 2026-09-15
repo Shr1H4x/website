@@ -144,7 +144,7 @@ h1 {
   margin: 0 0 6px;
 }
 .gradient-text {
-  background: linear-gradient(90deg, #e31b23, #ff8c00, #00aa00, #0048ba);
+  background: linear-gradient(90deg, #00994d, #00e676);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
