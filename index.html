@@ -25,16 +25,18 @@
 </head>
 <body>
 
-  <div class="page">
+  <div class="page" id="top">
 
     <!-- ======== STICKY TOPBAR (title + nav) ======== -->
     <header class="topbar">
       <span class="window-title">ShriHax | Home Page</span>
       <nav class="retro-nav sticky-nav">
+        <a href="#top">Home</a>
         <a href="#about">About Me</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#labs">Labs</a>
+        <a href="blogs/">Blogs</a>
         <a href="#contact">Contact</a>
       </nav>
       <button class="theme-btn" id="themeToggle" type="button" title="Toggle dark mode" aria-label="Toggle dark mode">
@@ -77,11 +79,10 @@
       </marquee>
     </div>
 
-    <a name="top"></a>
     <hr>
 
     <!-- ======== ABOUT ======== -->
-    <a name="about"></a>
+    <a name="about" id="about"></a>
     <h2>About Me</h2>
     <hr>
     <p>I break things for a living. My own things, on my own machines, up on HackTheBox and TryHackMe. I started writing port scanners and crawlers to figure out how the network actually talks, and it just stuck. These days that's turned into a toolbox I keep adding to.</p>
@@ -103,7 +104,7 @@
     <hr>
 
     <!-- ======== SKILLS ======== -->
-    <a name="skills"></a>
+    <a name="skills" id="skills"></a>
     <h2>Technical Skills</h2>
     <hr>
     <p>How I rate myself on the stuff I actually reach for. These are honest numbers: can I read it, write it, and debug it without Googling every line. You won't catch me claiming I have everything memorized.</p>
@@ -152,11 +153,12 @@
     <hr>
 
     <!-- ======== PROJECTS ======== -->
-    <a name="projects"></a>
+    <a name="projects" id="projects"></a>
     <h2>My Projects</h2>
     <hr>
     <p>All my work lives on <a href="https://github.com/Shr1H4x" target="_blank" rel="noopener"><b>GitHub</b></a>. The newest stuff is at the top.</p>
 
+    <div class="table-wrap">
     <table border="1" cellspacing="0" cellpadding="4" class="retro-table projects-table">
       <tr>
         <th>#</th>
@@ -168,77 +170,78 @@
       </tr>
       <tr>
         <td>•</td>
-        <td>X_Change <span class="new-badge">NEW!</span></td>
-        <td>Python</td>
-        <td>Personal IP &amp; MAC changer</td>
-        <td>Apr 2026</td>
-        <td><a href="https://github.com/Shr1H4x/X_Change" target="_blank" rel="noopener">View</a></td>
+        <td data-label="Project">X_Change <span class="new-badge">NEW!</span></td>
+        <td data-label="Lang">Python</td>
+        <td data-label="Description">Personal IP &amp; MAC changer</td>
+        <td data-label="Date">Apr 2026</td>
+        <td data-label="Link"><a href="https://github.com/Shr1H4x/X_Change" target="_blank" rel="noopener">View</a></td>
       </tr>
       <tr>
         <td>•</td>
-        <td>Cryptex-Rolling-file-vault</td>
-        <td>Python</td>
-        <td>Personal vault with file encryption features</td>
-        <td>Feb 2026</td>
-        <td><a href="https://github.com/Shr1H4x/Cryptex-Rolling-file-vault" target="_blank" rel="noopener">View</a></td>
+        <td data-label="Project">Cryptex-Rolling-file-vault</td>
+        <td data-label="Lang">Python</td>
+        <td data-label="Description">Personal vault with file encryption features</td>
+        <td data-label="Date">Feb 2026</td>
+        <td data-label="Link"><a href="https://github.com/Shr1H4x/Cryptex-Rolling-file-vault" target="_blank" rel="noopener">View</a></td>
       </tr>
       <tr>
         <td>•</td>
-        <td>NetToss-Wireless_File_Transfer</td>
-        <td>Python</td>
-        <td>File transfer over internet and wifi direct</td>
-        <td>Jan 2026</td>
-        <td><a href="https://github.com/Shr1H4x/NetToss-Wireless_File_Transfer" target="_blank" rel="noopener">View</a></td>
+        <td data-label="Project">NetToss-Wireless_File_Transfer</td>
+        <td data-label="Lang">Python</td>
+        <td data-label="Description">File transfer over internet and wifi direct</td>
+        <td data-label="Date">Jan 2026</td>
+        <td data-label="Link"><a href="https://github.com/Shr1H4x/NetToss-Wireless_File_Transfer" target="_blank" rel="noopener">View</a></td>
       </tr>
       <tr>
         <td>•</td>
-        <td>sysmaint</td>
-        <td>Shell</td>
-        <td>Interactive Zsh maintenance tool for Debian/Kali: apt update/upgrade, clean progress UI, logs, snapshots</td>
-        <td>Apr 2026</td>
-        <td><a href="https://github.com/Shr1H4x/sysmaint" target="_blank" rel="noopener">View</a></td>
+        <td data-label="Project">sysmaint</td>
+        <td data-label="Lang">Shell</td>
+        <td data-label="Description">Interactive Zsh maintenance tool for Debian/Kali: apt update/upgrade, clean progress UI, logs, snapshots</td>
+        <td data-label="Date">Apr 2026</td>
+        <td data-label="Link"><a href="https://github.com/Shr1H4x/sysmaint" target="_blank" rel="noopener">View</a></td>
       </tr>
       <tr>
         <td>•</td>
-        <td>inet</td>
-        <td>Shell</td>
-        <td>Simple IP shower</td>
-        <td>Mar 2026</td>
-        <td><a href="https://github.com/Shr1H4x/inet" target="_blank" rel="noopener">View</a></td>
+        <td data-label="Project">inet</td>
+        <td data-label="Lang">Shell</td>
+        <td data-label="Description">Simple IP shower</td>
+        <td data-label="Date">Mar 2026</td>
+        <td data-label="Link"><a href="https://github.com/Shr1H4x/inet" target="_blank" rel="noopener">View</a></td>
       </tr>
       <tr>
         <td>•</td>
-        <td>Student-Management-System</td>
-        <td>PHP</td>
-        <td>Student Management System using PHP, SQL, CSS</td>
-        <td>Aug 2024</td>
-        <td><a href="https://github.com/Shr1H4x/Student-Management-System" target="_blank" rel="noopener">View</a></td>
+        <td data-label="Project">Student-Management-System</td>
+        <td data-label="Lang">PHP</td>
+        <td data-label="Description">Student Management System using PHP, SQL, CSS</td>
+        <td data-label="Date">Aug 2024</td>
+        <td data-label="Link"><a href="https://github.com/Shr1H4x/Student-Management-System" target="_blank" rel="noopener">View</a></td>
       </tr>
       <tr>
         <td>•</td>
-        <td>cryptography-in-linux</td>
-        <td>Shell</td>
-        <td>Encryption tools in Linux</td>
-        <td>Mar 2024</td>
-        <td><a href="https://github.com/Shr1H4x/cryptography-in-linux" target="_blank" rel="noopener">View</a></td>
+        <td data-label="Project">cryptography-in-linux</td>
+        <td data-label="Lang">Shell</td>
+        <td data-label="Description">Encryption tools in Linux</td>
+        <td data-label="Date">Mar 2024</td>
+        <td data-label="Link"><a href="https://github.com/Shr1H4x/cryptography-in-linux" target="_blank" rel="noopener">View</a></td>
       </tr>
       <tr>
         <td>•</td>
-        <td>port-scanner</td>
-        <td>Python</td>
-        <td>A network port scanning tool using Python</td>
-        <td>Feb 2024</td>
-        <td><a href="https://github.com/Shr1H4x/port-scanner" target="_blank" rel="noopener">View</a></td>
+        <td data-label="Project">port-scanner</td>
+        <td data-label="Lang">Python</td>
+        <td data-label="Description">A network port scanning tool using Python</td>
+        <td data-label="Date">Feb 2024</td>
+        <td data-label="Link"><a href="https://github.com/Shr1H4x/port-scanner" target="_blank" rel="noopener">View</a></td>
       </tr>
       <tr>
         <td>•</td>
-        <td>cryptography</td>
-        <td>C</td>
-        <td>A cryptography code using C language only</td>
-        <td>Feb 2024</td>
-        <td><a href="https://github.com/Shr1H4x/cryptography" target="_blank" rel="noopener">View</a></td>
+        <td data-label="Project">cryptography</td>
+        <td data-label="Lang">C</td>
+        <td data-label="Description">A cryptography code using C language only</td>
+        <td data-label="Date">Feb 2024</td>
+        <td data-label="Link"><a href="https://github.com/Shr1H4x/cryptography" target="_blank" rel="noopener">View</a></td>
       </tr>
     </table>
+    </div>
 
     <p class="cta-line">
       Want to see everything? <a href="https://github.com/Shr1H4x?tab=repositories" target="_blank" rel="noopener">Click here to view repos on GitHub</a>.
@@ -246,11 +249,12 @@
     <hr>
 
     <!-- ======== LABS ======== -->
-    <a name="labs"></a>
+    <a name="labs" id="labs"></a>
     <h2>Labs &amp; Engagements</h2>
     <hr>
     <p>A few boxes and malware samples I've worked through. Study targets only. Nothing in production, nothing that isn't mine to poke.</p>
 
+    <div class="table-wrap">
     <table border="1" cellspacing="0" cellpadding="4" class="retro-table">
       <tr>
         <th>Machine / Target</th>
@@ -260,41 +264,42 @@
         <th>Status</th>
       </tr>
       <tr>
-        <td><b>Alert</b> <span class="dim">10.10.11.44</span></td>
-        <td>HackTheBox</td>
-        <td class="cve">XSS → RCE</td>
-        <td class="mono dim">Nmap, Burp, LinPEAS</td>
-        <td class="owned">Rooted</td>
+        <td data-label="Machine"><b>Alert</b> <span class="dim">10.10.11.44</span></td>
+        <td data-label="Platform">HackTheBox</td>
+        <td data-label="Technique" class="cve">XSS → RCE</td>
+        <td data-label="Tools" class="mono dim">Nmap, Burp, LinPEAS</td>
+        <td data-label="Status" class="owned">Rooted</td>
       </tr>
       <tr>
-        <td><b>Lampiao</b></td>
-        <td>VulnHub</td>
-        <td class="cve">CVE-2018-7600, CVE-2016-5195</td>
-        <td class="mono dim">Nmap, Metasploit, Hydra, CeWL, DirtyCow</td>
-        <td class="owned">Rooted</td>
+        <td data-label="Machine"><b>Lampiao</b></td>
+        <td data-label="Platform">VulnHub</td>
+        <td data-label="Technique" class="cve">CVE-2018-7600, CVE-2016-5195</td>
+        <td data-label="Tools" class="mono dim">Nmap, Metasploit, Hydra, CeWL, DirtyCow</td>
+        <td data-label="Status" class="owned">Rooted</td>
       </tr>
       <tr>
-        <td><b>Emotet Epoch 2</b></td>
-        <td>Malware Lab</td>
-        <td class="cve">Dynamic Analysis</td>
-        <td class="mono dim">x32dbg, YARA, REMnux</td>
-        <td class="owned">Smashed</td>
+        <td data-label="Machine"><b>Emotet Epoch 2</b></td>
+        <td data-label="Platform">Malware Lab</td>
+        <td data-label="Technique" class="cve">Dynamic Analysis</td>
+        <td data-label="Tools" class="mono dim">x32dbg, YARA, REMnux</td>
+        <td data-label="Status" class="owned">Smashed</td>
       </tr>
       <tr>
-        <td><b>RAT / Infostealer</b></td>
-        <td>Malware Lab</td>
-        <td class="cve">Static + Dynamic</td>
-        <td class="mono dim">YARA (8 rules), PEiD</td>
-        <td class="owned">Smashed</td>
+        <td data-label="Machine"><b>RAT / Infostealer</b></td>
+        <td data-label="Platform">Malware Lab</td>
+        <td data-label="Technique" class="cve">Static + Dynamic</td>
+        <td data-label="Tools" class="mono dim">YARA (8 rules), PEiD</td>
+        <td data-label="Status" class="owned">Smashed</td>
       </tr>
       <tr>
-        <td><b>SEA</b></td>
-        <td>HackTheBox</td>
-        <td class="cve">CVE-2023-41425</td>
-        <td class="mono dim">Nmap, Hydra, SQL, log-filtration</td>
-        <td class="owned">Rooted</td>
+        <td data-label="Machine"><b>SEA</b></td>
+        <td data-label="Platform">HackTheBox</td>
+        <td data-label="Technique" class="cve">CVE-2023-41425</td>
+        <td data-label="Tools" class="mono dim">Nmap, Hydra, SQL, log-filtration</td>
+        <td data-label="Status" class="owned">Rooted</td>
       </tr>
     </table>
+    </div>
 
     <p><b>My platforms:</b></p>
     <ul>
@@ -304,7 +309,7 @@
     <hr>
 
     <!-- ======== CONTACT ======== -->
-    <a name="contact"></a>
+    <a name="contact" id="contact"></a>
     <h2>Contact Me</h2>
     <hr>
     <p>Open to internships, security work, or just trading notes on something you're stuck on. I usually reply within a day.</p>

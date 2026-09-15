@@ -7,15 +7,19 @@
 
 /* ── THEME TOGGLE ────────────────────────── */
 const themeToggle = document.getElementById('themeToggle');
-const savedTheme  = localStorage.getItem('shrihax-theme');
-if (savedTheme === 'dark') {
-  document.body.setAttribute('data-theme', 'dark');
-}
+try {
+  const savedTheme  = localStorage.getItem('shrihax-theme');
+  if (savedTheme === 'dark') {
+    document.body.setAttribute('data-theme', 'dark');
+  }
+} catch { /* private mode: ignore */ }
+if (themeToggle) {
 themeToggle.addEventListener('click', () => {
   const next = document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
   document.body.setAttribute('data-theme', next);
-  localStorage.setItem('shrihax-theme', next);
+  try { localStorage.setItem('shrihax-theme', next); } catch { /* ignore */ }
 });
+}
 
 
 /* ── YEAR ─────────────────────────────────── */
@@ -84,9 +88,9 @@ const webringRandom = document.getElementById('webringRandom');
 if (webringRandom) {
   webringRandom.addEventListener('click', (e) => {
     e.preventDefault();
-    const stops = ['about', 'skills', 'projects', 'labs', 'contact'];
+    const stops = ['top', 'about', 'skills', 'projects', 'labs', 'contact'];
     const pick  = stops[Math.floor(Math.random() * stops.length)];
-    const target = document.querySelector('a[name="' + pick + '"]') || document.querySelector('#' + pick);
+    const target = document.querySelector('#' + pick) || document.querySelector('a[name="' + pick + '"]');
     if (!target) return;
     if (prefersReduced) target.scrollIntoView();
     else target.scrollIntoView({ behavior: 'smooth' });

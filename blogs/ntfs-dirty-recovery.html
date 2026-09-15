@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dirty NTFS Recovery: Back Up First, ntfsfix Later | ShriHax Blogs</title>
+  <meta name="description" content="A dirty NTFS volume refused read-write mount on Linux — how I verified read-only, backed everything up, then cleared the dirty bit." />
+  <link rel="canonical" href="https://shrijesh.com.np/blogs/ntfs-dirty-recovery.html" />
+  <link rel="icon" type="image/x-icon" href="../image/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="../image/favicon.svg" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <div class="page" id="top">
+
+    <!-- ======== STICKY TOPBAR (title + nav) ======== -->
+    <header class="topbar">
+      <span class="window-title">ShriHax | Blogs</span>
+      <nav class="retro-nav sticky-nav">
+        <a href="../#top">Home</a>
+        <a href="../#about">About Me</a>
+        <a href="../#skills">Skills</a>
+        <a href="../#projects">Projects</a>
+        <a href="../#labs">Labs</a>
+        <a href="./">Blogs</a>
+        <a href="../#contact">Contact</a>
+      </nav>
+      <button class="theme-btn" id="themeToggle" type="button" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </header>
+
+    <p class="mono dim"><a href="../#top">Home</a> / <a href="./">Blogs</a> / NTFS recovery</p>
+
+    <h2>Dirty NTFS Recovery: Back Up First, ntfsfix Later</h2>
+    <p class="post-meta">Sep 12, 2026 · linux, filesystems, data recovery</p>
+    <hr>
+
+    <p>My <code>DATA_HDD</code> (<code>/dev/sda2</code>, NTFS) refused a read-write mount. It mounted read-only, so I backed everything up to another drive first and only then cleared the dirty bit. Along the way I also restored ~4 GB of Kali files (CTF tooling, docs, media) from an old Timeshift snapshot into <code>~/kali-restore-tmp/</code>.</p>
+
+    <h3>Cause</h3>
+<pre><code>journalctl: ntfs3(sda2): volume is dirty and "force" flag is not set!
+It is recommended to use chkdsk.</code></pre>
+    <p>Windows Fast Startup / hibernation / an unclean shutdown left the dirty bit set, and the Linux <code>ntfs3</code> driver blocks RW mounts to protect your data. No I/O errors — the sibling partitions on the same disk mounted fine, so this was purely the dirty flag.</p>
+
+    <h3>Step 1: read-only verify (zero writes)</h3>
+<pre><code>udisksctl mount -b /dev/sda2 --options ro
+df -h /run/media/$USER/DATA_HDD  # 199G, 78G used
+ls /run/media/$USER/DATA_HDD</code></pre>
+
+    <h3>Step 2: back up before touching anything</h3>
+    <p>Target: a folder on the second drive (<code>GAMES_HDD/DATA_HDD_backup/</code>). Lesson learned: on one spinning HDD, <code>rsync -avh</code> with per-file logging was too slow (aborted at 16G) and <code>tar</code> re-reads everything on resume (killed at 52G). What worked was quiet <code>cp</code>, one copy at a time — parallel copies on the same spindle just halve the speed:</p>
+<pre><code>mkdir -p "/run/media/$USER/GAMES_HDD/DATA_HDD_backup"
+nohup cp -a "/run/media/$USER/DATA_HDD/Redmi-Note-10-Pro" \
+  "/run/media/$USER/GAMES_HDD/DATA_HDD_backup/" &gt; /tmp/redmi.log 2&gt;&amp;1 &amp;
+# resume-friendly variant for big trees (skip existing without re-reading):
+nohup cp -aun "/run/media/$USER/DATA_HDD/CACHYOS_MIGRATION" \
+  "/run/media/$USER/GAMES_HDD/DATA_HDD_backup/" &gt; /tmp/cachyos.log 2&gt;&amp;1 &amp;</code></pre>
+    <p><code>cp -aun</code> = archive + update + no-clobber: skips existing files without re-reading their data, the fastest resume on a spinning disk.</p>
+
+    <h3>Step 3: the actual NTFS fix (after backup)</h3>
+<pre><code>udisksctl unmount -b /dev/sda2
+sudo ntfsfix /dev/sda2
+udisksctl mount -b /dev/sda2
+# best long-term: boot Windows, run `chkdsk E: /f`, and disable Fast Startup</code></pre>
+
+    <h3>Notes</h3>
+    <ul>
+      <li><code>ntfsfix</code> lives at <code>/usr/bin/ntfsfix</code>; <code>ntfs-3g</code> wasn't installed, the kernel used <code>ntfs3</code>.</li>
+      <li>One copy at a time on the same HDD — parallelism halves throughput.</li>
+      <li>Timeshift snapshots are <code>root:root</code> 700 by design. Read via <code>sudo</code>, or grant yourself access with <code>sudo setfacl -R -m u:$USER:rX ...</code>.</li>
+      <li>Deleting the old Timeshift tree afterwards is irreversible — verify the backup and the restore first.</li>
+    </ul>
+    <hr>
+
+    <!-- ======== FOOTER ======== -->
+    <center>
+      <p><a href="./">← Back to Blogs</a> · <a href="../#top">Home</a></p>
+      <hr>
+      <p class="dim">© <span id="year"></span> Shrijesh Pokharel, made with ♥ on Kali Linux</p>
+      <p><a href="#top">↑ Back to Top</a></p>
+    </center>
+
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>

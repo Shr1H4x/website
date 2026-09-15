@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skipping the LUKS Password Prompt with a Keyfile | ShriHax Blogs</title>
+  <meta name="description" content="How I made an Omarchy (Arch) laptop with Limine UKI boot unlock its LUKS root volume automatically with an initramfs-embedded keyfile." />
+  <link rel="canonical" href="https://shrijesh.com.np/blogs/luks-keyfile-autounlock.html" />
+  <link rel="icon" type="image/x-icon" href="../image/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="../image/favicon.svg" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <div class="page" id="top">
+
+    <!-- ======== STICKY TOPBAR (title + nav) ======== -->
+    <header class="topbar">
+      <span class="window-title">ShriHax | Blogs</span>
+      <nav class="retro-nav sticky-nav">
+        <a href="../#top">Home</a>
+        <a href="../#about">About Me</a>
+        <a href="../#skills">Skills</a>
+        <a href="../#projects">Projects</a>
+        <a href="../#labs">Labs</a>
+        <a href="./">Blogs</a>
+        <a href="../#contact">Contact</a>
+      </nav>
+      <button class="theme-btn" id="themeToggle" type="button" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </header>
+
+    <p class="mono dim"><a href="../#top">Home</a> / <a href="./">Blogs</a> / LUKS keyfile</p>
+
+    <h2>Skipping the LUKS Password Prompt with a Keyfile</h2>
+    <p class="post-meta">Aug 28, 2026 · disk encryption, Arch, Limine</p>
+    <hr>
+
+    <p><b>Goal:</b> hide/skip the LUKS disk-encryption password prompt at boot so the system boots straight to the login screen (SDDM), unlocking the root LUKS volume automatically with a keyfile.</p>
+    <p>Environment: Omarchy (Arch) with a UKI boot via Limine, Plymouth splash, and the legacy <code>encrypt</code> initramfs hook (<code>HOOKS=... encrypt filesystems fsck</code>).</p>
+
+    <h3>Important: device naming gotcha</h3>
+    <p>The root OS drive is <code>nvme0n1</code> (NOT <code>nvme1n1</code>):</p>
+    <ul>
+      <li>Root LUKS partition: <code>nvme0n1p2</code></li>
+      <li>ESP (boot): <code>nvme0n1p1</code></li>
+    </ul>
+    <p>Always reference disks by PARTUUID; the <code>nvme*</code> names can be ambiguous.</p>
+
+    <h3>1. Recovery key (fallback, always keep)</h3>
+<pre><code>sudo systemd-cryptenroll /dev/nvme0n1p2 --recovery-key   # -&gt; key slot 1</code></pre>
+    <p>Recovery key saved separately on paper. Never lose it.</p>
+
+    <h3>2. TPM token (enrolled but NOT used here)</h3>
+<pre><code>sudo systemd-cryptenroll /dev/nvme0n1p2 --tpm2-device=auto   # -&gt; key slot 2</code></pre>
+    <p>Note: the legacy Plymouth + <code>encrypt</code> hook does NOT honor TPM2 tokens (<code>systemd-cryptenroll</code> only helps systemd/<code>sd-encrypt</code> initramfs). The TPM token is inert with this boot stack. The keyfile below is what actually removes the prompt.</p>
+
+    <h3>3. Keyfile (chosen approach)</h3>
+    <p>Generate a random 4 KiB keyfile on the ESP:</p>
+<pre><code>sudo dd if=/dev/urandom of=/boot/cryptkey.bin bs=512 count=8
+sudo chmod 600 /boot/cryptkey.bin
+# chattr +i not possible: /boot is vfat (FAT32), no immutable attr</code></pre>
+    <p>Enroll it as a LUKS slot (prompts for a current passphrase to authorize):</p>
+<pre><code>sudo cryptsetup luksAddKey /dev/nvme0n1p2 /boot/cryptkey.bin</code></pre>
+
+    <h3>4. First attempt (ESP-mounted keyfile) — FAILED at boot</h3>
+<pre><code>echo 'KERNEL_CMDLINE[default]+=" cryptkey=PARTUUID=&lt;esp-partuuid&gt;:vfat:/cryptkey.bin"' \
+  | sudo tee /etc/limine-entry-tool.d/cryptkey.conf</code></pre>
+    <p>The keyfile worked at runtime (<code>cryptsetup luksOpen --test-passphrase --key-file /boot/cryptkey.bin</code> said "Key slot unlocked"), but the <code>encrypt</code> hook still prompted at boot: the legacy hook mounts the ESP too early and silently falls back to the passphrase prompt.</p>
+
+    <h3>5. Working fix: embed the keyfile inside the initramfs</h3>
+    <p>Copy the key to a root path and add it to the initramfs via a mkinitcpio drop-in:</p>
+<pre><code>sudo cp /boot/cryptkey.bin /crypto_keyfile.bin
+sudo chmod 600 /crypto_keyfile.bin
+echo 'FILES=(/crypto_keyfile.bin)' | sudo tee /etc/mkinitcpio.conf.d/cryptkey.conf</code></pre>
+    <p>Point the <code>encrypt</code> hook at it:</p>
+<pre><code>echo 'KERNEL_CMDLINE[default]+=" cryptkey=rootfs:/crypto_keyfile.bin"' \
+  | sudo tee /etc/limine-entry-tool.d/cryptkey.conf</code></pre>
+    <p>Rebuild the UKI + limine config (so it persists across regenerations):</p>
+<pre><code>sudo limine-update
+sudo limine-snapper-sync</code></pre>
+    <p>Verify:</p>
+<pre><code>sudo lsinitcpio /boot/EFI/Linux/omarchy_linux.efi | grep crypto_keyfile  # crypto_keyfile.bin
+sudo grep 'cryptkey' /boot/limine.conf                                    # cryptkey=rootfs:/crypto_keyfile.bin</code></pre>
+
+    <h3>Result</h3>
+    <p>Boot no longer asks for the disk-encryption password; the LUKS root volume unlocks from the embedded keyfile inside the UKI/initramfs, and the system goes straight to the SDDM login.</p>
+
+    <h3>Files / configs changed</h3>
+    <div class="table-wrap">
+    <table border="1" cellspacing="0" cellpadding="4" class="retro-table">
+      <tr>
+        <th>File</th>
+        <th>Change</th>
+      </tr>
+      <tr>
+        <td data-label="File" class="mono">/etc/mkinitcpio.conf.d/cryptkey.conf</td>
+        <td data-label="Change" class="mono">FILES=(/crypto_keyfile.bin)</td>
+      </tr>
+      <tr>
+        <td data-label="File" class="mono">/etc/limine-entry-tool.d/cryptkey.conf</td>
+        <td data-label="Change" class="mono">KERNEL_CMDLINE[default]+=" cryptkey=rootfs:/crypto_keyfile.bin"</td>
+      </tr>
+      <tr>
+        <td data-label="File" class="mono">/boot/cryptkey.bin</td>
+        <td data-label="Change">keyfile (enrolled as LUKS slot)</td>
+      </tr>
+      <tr>
+        <td data-label="File" class="mono">/crypto_keyfile.bin</td>
+        <td data-label="Change">copy embedded in initramfs</td>
+      </tr>
+    </table>
+    </div>
+
+    <h3>Security tradeoff (read this)</h3>
+    <p>With a keyfile in the initramfs on the ESP, anyone with physical access to the boot media while the machine is off can read the key and decrypt the volume. This only protects against pulling the drive from a powered-off machine. The original passphrase slot and the recovery key (slot 1) still work as fallbacks.</p>
+    <hr>
+
+    <!-- ======== FOOTER ======== -->
+    <center>
+      <p><a href="./">← Back to Blogs</a> · <a href="../#top">Home</a></p>
+      <hr>
+      <p class="dim">© <span id="year"></span> Shrijesh Pokharel, made with ♥ on Kali Linux</p>
+      <p><a href="#top">↑ Back to Top</a></p>
+    </center>
+
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>

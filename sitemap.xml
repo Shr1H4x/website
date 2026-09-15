@@ -6,37 +6,22 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://shrijesh.com.np/writeups/index.html</loc>
+    <loc>https://shrijesh.com.np/blogs/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://shrijesh.com.np/writeups/htb-alert.html</loc>
+    <loc>https://shrijesh.com.np/blogs/ntfs-dirty-recovery.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://shrijesh.com.np/writeups/htb-lampiao.html</loc>
+    <loc>https://shrijesh.com.np/blogs/hybrid-gpu-video-decode.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://shrijesh.com.np/writeups/htb-sea.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://shrijesh.com.np/writeups/nocturnal.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://shrijesh.com.np/writeups/chemistry.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://shrijesh.com.np/writeups/sightless.html</loc>
+    <loc>https://shrijesh.com.np/blogs/luks-keyfile-autounlock.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

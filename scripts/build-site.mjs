@@ -240,7 +240,7 @@ ${allRepos.map((repo) => buildCard(repo)).join('\n')}
   await mkdir(distDir, { recursive: true });
   await writeFile(path.join(distDir, 'index.html'), renderedIndex, 'utf8');
 
-  for (const fileName of ['style.css', 'writeups.css', 'script.js', 'robots.txt', 'sitemap.xml', 'CNAME']) {
+  for (const fileName of ['style.css', 'script.js', 'robots.txt', 'sitemap.xml', 'CNAME']) {
     try {
       await cp(path.join(rootDir, fileName), path.join(distDir, fileName));
     } catch {
@@ -248,7 +248,7 @@ ${allRepos.map((repo) => buildCard(repo)).join('\n')}
     }
   }
 
-  for (const folderName of ['image', 'writeups']) {
+  for (const folderName of ['image', 'blogs']) {
     try {
       await cp(path.join(rootDir, folderName), path.join(distDir, folderName), { recursive: true });
     } catch {
