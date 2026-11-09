@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shrijesh Pokharel (ShriHax) | Ethical Hacker &amp; Security Researcher</title>
+  <meta name="description" content="Shrijesh Pokharel (ShriHax): ethical hacker, malware analyst and tool builder from Kathmandu, Nepal. Offensive security projects, lab writeups and notes." />
+  <meta name="keywords" content="cyber security, ethical hacking, penetration testing, malware analysis, Kali Linux, Nepal, Shrijesh Pokharel, ShriHax" />
+  <meta name="author" content="Shrijesh Pokharel" />
+  <meta name="theme-color" content="#05070a" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://shrijesh.com.np/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Shrijesh Pokharel (ShriHax) | Ethical Hacker &amp; Security Researcher" />
+  <meta property="og:description" content="I find the cracks before attackers do. Offensive security projects, malware labs and notes from Kathmandu, Nepal." />
+  <meta property="og:url" content="https://shrijesh.com.np/" />
+  <meta property="og:image" content="https://shrijesh.com.np/image/avatar.jpg" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="1024" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Shrijesh Pokharel (ShriHax) | Ethical Hacker &amp; Security Researcher" />
+  <meta name="twitter:description" content="I find the cracks before attackers do. Offensive security projects, malware labs and notes from Kathmandu, Nepal." />
+  <meta name="twitter:image" content="https://shrijesh.com.np/image/avatar.jpg" />
+
+  <link rel="icon" type="image/x-icon" href="image/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="image/favicon.svg" />
+  <link rel="apple-touch-icon" href="image/favicon.ico" />
+  <link rel="preload" href="fonts/Syne-Variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/JetBrainsMono-Variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Shrijesh Pokharel",
+    "alternateName": "ShriHax",
+    "url": "https://shrijesh.com.np/",
+    "image": "https://shrijesh.com.np/image/avatar.jpg",
+    "jobTitle": "Ethical Hacker & Security Researcher",
+    "address": { "@type": "PostalAddress", "addressLocality": "Kathmandu", "addressCountry": "NP" },
+    "alumniOf": "Coventry University / Softwarica College",
+    "sameAs": [
+      "https://github.com/Shr1H4x",
+      "https://www.linkedin.com/in/shrijesh-pokharel/",
+      "https://tryhackme.com/p/Shr1H4x",
+      "https://app.hackthebox.com/users/2106835"
+    ],
+    "email": "mailto:shrijesh@proton.me"
+  }
+  </script>
+</head>
+<body>
+
+  <noscript><style>.loader{display:none!important}[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- boot screen -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-mark">&gt;_</div>
+    <div class="loader-title">SHRIHAX</div>
+    <div class="loader-track"><span id="loaderBar"></span></div>
+    <div class="loader-status mono" id="loaderStatus">initialising secure shell…</div>
+  </div>
+
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ambient background -->
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+  <!-- custom cursor (desktop only) -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="ShriHax, back to top">
+        <span class="brand-mark" aria-hidden="true">&gt;_</span>
+        <span class="brand-text">shri<span class="accent">hax</span></span>
+      </a>
+
+      <nav class="nav" id="primaryNav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#labs">Labs</a>
+        <a href="blogs/" data-section="blog">Blog</a>
+        <a href="#contact">Contact</a>
+        <span class="nav-indicator" id="navIndicator" aria-hidden="true"></span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow mono" data-reveal>
+            <span class="eyebrow-line" aria-hidden="true"></span>
+            ethical hacker · security researcher · kathmandu, np
+          </p>
+
+          <h1 data-reveal style="--delay:.08s">
+            Shrijesh<br />
+            <span class="gradient-text">Pokharel</span><br />
+          </h1>
+
+          <p class="hero-lede" data-reveal style="--delay:.16s">
+            I break my own systems, root boxes,
+            dissect malware and build the tools that make the next break harder.
+          </p>
+
+          <div class="type-line mono" data-reveal style="--delay:.24s" aria-live="polite">
+            <span class="prompt">shri@kali:~$</span>
+            <span class="type-label">currently:</span>
+            <span id="roleText">Ethical Hacker</span><span class="caret" aria-hidden="true">_</span>
+          </div>
+
+          <div class="hero-actions" data-reveal style="--delay:.32s">
+            <a class="btn btn-primary" href="#projects" data-magnetic>
+              Explore my work
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+            <a class="btn btn-ghost" href="blogs/" data-magnetic>
+              Read the blog
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+            </a>
+          </div>
+
+          <div class="hero-socials" data-reveal style="--delay:.4s">
+            <a href="https://github.com/Shr1H4x" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2A10 10 0 0 0 8.8 21.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7 1 .7 2v2.9c0 .3.2.6.7.5A10 10 0 0 0 12 2Z" /></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/shrijesh-pokharel/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9V9Z" /></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a href="mailto:shrijesh@proton.me" aria-label="Email">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3V6Zm0 1 9 7 9-7" /></svg>
+              <span>Email</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual" id="heroVisual" data-reveal style="--delay:.2s" aria-hidden="true">
+          <div class="orbit orbit-outer"></div>
+          <div class="orbit orbit-inner"></div>
+          <div class="orbit-dot dot-1"></div>
+          <div class="orbit-dot dot-2"></div>
+          <div class="avatar-frame">
+            <div class="avatar-glow"></div>
+            <img src="image/avatar.jpg" alt="Portrait of Shrijesh Pokharel" width="1024" height="1024" class="avatar" fetchpriority="high" />
+            <div class="avatar-scan"></div>
+          </div>
+
+          <div class="float-chip chip-a" data-float="1">
+            <span class="chip-icon">🛡</span>
+            <span><b>20+ boxes</b><small>rooted</small></span>
+          </div>
+          <div class="float-chip chip-b" data-float="2">
+            <span class="chip-icon">&gt;_</span>
+            <span><b>Kali Linux</b><small>daily driver</small></span>
+          </div>
+          <div class="float-chip chip-c" data-float="3">
+            <span class="chip-icon">🐍</span>
+            <span><b>Tool builder</b><small>python first</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ TICKER ═══════════════ -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Python</span><i>◆</i><span>Nmap</span><i>◆</i><span>Burp Suite</span><i>◆</i><span>Wireshark</span><i>◆</i><span>Metasploit</span><i>◆</i><span>Hashcat</span><i>◆</i><span>Docker</span><i>◆</i><span>GDB</span><i>◆</i><span>Bash</span><i>◆</i><span>SQLite</span><i>◆</i><span>Nginx</span><i>◆</i><span>Git</span><i>◆</i>
+        <span>Python</span><i>◆</i><span>Nmap</span><i>◆</i><span>Burp Suite</span><i>◆</i><span>Wireshark</span><i>◆</i><span>Metasploit</span><i>◆</i><span>Hashcat</span><i>◆</i><span>Docker</span><i>◆</i><span>GDB</span><i>◆</i><span>Bash</span><i>◆</i><span>SQLite</span><i>◆</i><span>Nginx</span><i>◆</i><span>Git</span><i>◆</i>
+      </div>
+    </div>
+
+    <!-- scroll cue -->
+    <a class="scroll-cue" href="#about" aria-label="Scroll to about">
+      <span class="scroll-mouse" aria-hidden="true"><span class="scroll-wheel"></span></span>
+      <svg class="scroll-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+    </a>
+
+    <!-- ═══════════════ ABOUT ═══════════════ -->
+    <section class="section" id="about">
+      <div class="section-head" data-reveal>
+        <p class="section-tag mono"><span class="tag-num">01</span> / about</p>
+        <h2 data-type>The human behind the terminal.</h2>
+      </div>
+
+      <div class="bento">
+        <article class="card card-about" data-reveal>
+          <p>
+            I break things for a living. My own things, on my own machines, up on HackTheBox
+            and TryHackMe. I started writing port scanners and crawlers to figure out how the
+            network actually talks, and it just stuck. These days that's turned into a toolbox
+            I keep adding to.
+          </p>
+          <p>
+            Right now I'm working through a <b>BSc (Hons) in Cyber Security &amp; Ethical Hacking</b>
+            at <b>Coventry University</b> via <b>Softwarica College</b> in Kathmandu. It's a lot of
+            theory, honestly, so I balance it out by rooting boxes and tearing apart malware
+            samples on the side.
+          </p>
+          <p>
+            I'm not the guy with all the answers. I'm the guy who'll tinker on something for three
+            days, break it in a new and interesting way, then write up what happened so nobody
+            else hits the same wall.
+          </p>
+          <div class="about-tags">
+            <span class="tag">red team mindset</span>
+            <span class="tag">malware analysis</span>
+            <span class="tag">tooling</span>
+            <span class="tag">learning in public</span>
+          </div>
+        </article>
+
+        <article class="card card-terminal" data-reveal style="--delay:.08s">
+          <div class="terminal-bar">
+            <span class="t-dot red"></span><span class="t-dot yellow"></span><span class="t-dot green"></span>
+            <span class="t-title mono">shri@kali: zsh</span>
+          </div>
+          <div class="terminal-body mono">
+            <p><span class="t-prompt">$</span> whoami</p>
+            <p class="t-out">shrijesh_pokharel</p>
+            <p><span class="t-prompt">$</span> cat /etc/focus</p>
+            <p class="t-out">offensive_security · malware · crypto</p>
+            <p><span class="t-prompt">$</span> uptime</p>
+            <p class="t-out">learning since 2022, still going</p>
+            <p><span class="t-prompt">$</span> <span id="terminalTyping"></span><span class="caret">_</span></p>
+          </div>
+        </article>
+
+        <article class="card card-edu" data-reveal>
+          <p class="card-kicker mono">// education</p>
+          <h3>BSc (Hons) Cyber Security &amp; Ethical Hacking</h3>
+          <p class="card-sub">Coventry University · Softwarica College, Kathmandu</p>
+          <p class="card-body">Focus on offensive security, malware analysis and cryptography, with a red-team mindset bolted on.</p>
+          <div class="edu-meta mono">
+            <span>2024 → present</span>
+            <span class="dot-sep"></span>
+            <span>Kathmandu, NP</span>
+          </div>
+        </article>
+
+        <article class="card card-stats" data-reveal style="--delay:.06s">
+          <div class="stat-grid">
+            <div class="stat">
+              <span class="stat-num"><span data-count="16">16</span><span class="stat-suffix">+</span></span>
+              <span class="stat-label">repos &amp; tools</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num"><span data-count="20">20</span><span class="stat-suffix">+</span></span>
+              <span class="stat-label">boxes owned</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num"><span data-count="5">5</span></span>
+              <span class="stat-label">languages</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num"><span data-count="5">5</span></span>
+              <span class="stat-label">labs logged</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-learning" data-reveal style="--delay:.12s">
+          <p class="card-kicker mono">// now learning</p>
+          <ul class="learning-list">
+            <li>
+              <span class="learn-key">CI/CD pipelines</span>
+              <span class="learn-bar"><span style="--w:35%"></span></span>
+            </li>
+            <li>
+              <span class="learn-key">Dart</span>
+              <span class="learn-bar"><span style="--w:25%"></span></span>
+            </li>
+          </ul>
+          <p class="card-body">Always one rabbit hole deep. Notes end up on the blog.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ═══════════════ SKILLS ═══════════════ -->
+    <section class="section" id="skills">
+      <div class="section-head" data-reveal>
+        <p class="section-tag mono"><span class="tag-num">02</span> / skills</p>
+        <h2 data-type>The stuff I actually reach for.</h2>
+        <p class="section-note" data-type>Honest numbers: can I read it, write it. You won't catch me claiming I have everything memorised. Theres still a lot to learn.</p>
+      </div>
+
+      <div class="skills-grid">
+        <article class="skill-card" data-reveal>
+          <div class="skill-card-head">
+            <span class="skill-icon">{ }</span>
+            <h3>Programming</h3>
+          </div>
+          <div class="skill-list">
+            <div class="skill-row"><span class="skill-name">Python</span><span class="skill-track"><span class="skill-fill" data-w="57" style="width:57%"></span></span><span class="skill-pct" data-count="57">57%</span></div>
+            <div class="skill-row"><span class="skill-name">Bash</span><span class="skill-track"><span class="skill-fill" data-w="68" style="width:68%"></span></span><span class="skill-pct" data-count="68">68%</span></div>
+            <div class="skill-row"><span class="skill-name">CSS</span><span class="skill-track"><span class="skill-fill" data-w="60" style="width:60%"></span></span><span class="skill-pct" data-count="60">60%</span></div>
+            <div class="skill-row"><span class="skill-name">JavaScript</span><span class="skill-track"><span class="skill-fill" data-w="54" style="width:54%"></span></span><span class="skill-pct" data-count="54">54%</span></div>
+            <div class="skill-row"><span class="skill-name">HTML</span><span class="skill-track"><span class="skill-fill" data-w="55" style="width:55%"></span></span><span class="skill-pct" data-count="55">55%</span></div>
+            <div class="skill-row"><span class="skill-name">PHP</span><span class="skill-track"><span class="skill-fill" data-w="49" style="width:49%"></span></span><span class="skill-pct" data-count="49">49%</span></div>
+            <div class="skill-row"><span class="skill-name">C</span><span class="skill-track"><span class="skill-fill" data-w="42" style="width:42%"></span></span><span class="skill-pct" data-count="42">42%</span></div>
+          </div>
+        </article>
+
+        <article class="skill-card" data-reveal style="--delay:.06s">
+          <div class="skill-card-head">
+            <span class="skill-icon">&gt;_</span>
+            <h3>Tools &amp; platforms</h3>
+          </div>
+          <div class="skill-list">
+            <div class="skill-row"><span class="skill-name">Kali Linux</span><span class="skill-track"><span class="skill-fill" data-w="68" style="width:68%"></span></span><span class="skill-pct" data-count="68">68%</span></div>
+            <div class="skill-row"><span class="skill-name">Git / GitHub</span><span class="skill-track"><span class="skill-fill" data-w="65" style="width:65%"></span></span><span class="skill-pct" data-count="65">65%</span></div>
+            <div class="skill-row"><span class="skill-name">VS Code</span><span class="skill-track"><span class="skill-fill" data-w="60" style="width:60%"></span></span><span class="skill-pct" data-count="60">60%</span></div>
+            <div class="skill-row"><span class="skill-name">Docker</span><span class="skill-track"><span class="skill-fill" data-w="41" style="width:41%"></span></span><span class="skill-pct" data-count="41">41%</span></div>
+            <div class="skill-row"><span class="skill-name">Nginx</span><span class="skill-track"><span class="skill-fill" data-w="40" style="width:40%"></span></span><span class="skill-pct" data-count="40">40%</span></div>
+            <div class="skill-row"><span class="skill-name">GDB</span><span class="skill-track"><span class="skill-fill" data-w="38" style="width:38%"></span></span><span class="skill-pct" data-count="38">38%</span></div>
+          </div>
+        </article>
+
+        <article class="skill-card" data-reveal style="--delay:.12s">
+          <div class="skill-card-head">
+            <span class="skill-icon">⛨</span>
+            <h3>Security &amp; networking</h3>
+          </div>
+          <div class="skill-list">
+            <div class="skill-row"><span class="skill-name">Nmap</span><span class="skill-track"><span class="skill-fill" data-w="75" style="width:75%"></span></span><span class="skill-pct" data-count="75">75%</span></div>
+            <div class="skill-row"><span class="skill-name">Burp Suite</span><span class="skill-track"><span class="skill-fill" data-w="65" style="width:65%"></span></span><span class="skill-pct" data-count="65">65%</span></div>
+            <div class="skill-row"><span class="skill-name">Wireshark</span><span class="skill-track"><span class="skill-fill" data-w="60" style="width:60%"></span></span><span class="skill-pct" data-count="60">60%</span></div>
+            <div class="skill-row"><span class="skill-name">Hydra</span><span class="skill-track"><span class="skill-fill" data-w="60" style="width:60%"></span></span><span class="skill-pct" data-count="60">60%</span></div>
+            <div class="skill-row"><span class="skill-name">Aircrack-ng</span><span class="skill-track"><span class="skill-fill" data-w="57" style="width:57%"></span></span><span class="skill-pct" data-count="57">57%</span></div>
+            <div class="skill-row"><span class="skill-name">Metasploit</span><span class="skill-track"><span class="skill-fill" data-w="50" style="width:50%"></span></span><span class="skill-pct" data-count="50">50%</span></div>
+            <div class="skill-row"><span class="skill-name">Hashcat</span><span class="skill-track"><span class="skill-fill" data-w="50" style="width:50%"></span></span><span class="skill-pct" data-count="50">50%</span></div>
+          </div>
+        </article>
+
+        <article class="skill-card" data-reveal style="--delay:.18s">
+          <div class="skill-card-head">
+            <span class="skill-icon">▤</span>
+            <h3>Databases</h3>
+          </div>
+          <div class="skill-list">
+            <div class="skill-row"><span class="skill-name">SQLite</span><span class="skill-track"><span class="skill-fill" data-w="60" style="width:60%"></span></span><span class="skill-pct" data-count="60">60%</span></div>
+            <div class="skill-row"><span class="skill-name">MongoDB</span><span class="skill-track"><span class="skill-fill" data-w="52" style="width:52%"></span></span><span class="skill-pct" data-count="52">52%</span></div>
+            <div class="skill-row"><span class="skill-name">Redis</span><span class="skill-track"><span class="skill-fill" data-w="42" style="width:42%"></span></span><span class="skill-pct" data-count="42">42%</span></div>
+            <div class="skill-row"><span class="skill-name">MySQL</span><span class="skill-track"><span class="skill-fill" data-w="37" style="width:37%"></span></span><span class="skill-pct" data-count="37">37%</span></div>
+          </div>
+          <p class="skill-foot mono">* I still read the man page. Just less often.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ═══════════════ PROJECTS ═══════════════ -->
+    <section class="section" id="projects">
+      <div class="section-head" data-reveal>
+        <p class="section-tag mono"><span class="tag-num">03</span> / projects</p>
+        <h2 data-type>Things I built to break other things.</h2>
+        <p class="section-note" data-type>All of it lives on GitHub. Newest first.</p>
+      </div>
+
+      
+      <!-- PROJECTS_STATIC_START -->
+      <div class="featured-projects" id="featuredProjectsGrid" data-reveal>
+
+        <div class="project-featured" data-tilt>
+          <div class="project-featured-meta">
+            <span class="proj-num mono accent">01</span>
+            <div class="proj-tags">
+              <span class="proj-tag">IP Spoof</span><span class="proj-tag">OPSEC</span><span class="proj-tag accent-tag">Featured</span>
+            </div>
+          </div>
+          <h3 class="proj-title">X Change</h3>
+          <p class="proj-desc">personal IP&amp;MAC changer</p>
+          <div class="proj-links">
+            <a href="https://github.com/Shr1H4x/X_Change" target="_blank" rel="noopener" class="proj-link">
+              View Code <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <span class="proj-date mono">April 2026</span>
+        </div>
+
+        <div class="project-featured" data-tilt>
+          <div class="project-featured-meta">
+            <span class="proj-num mono accent">02</span>
+            <div class="proj-tags">
+              <span class="proj-tag">Encryption</span><span class="proj-tag">File Vault</span><span class="proj-tag accent-tag">Featured</span>
+            </div>
+          </div>
+          <h3 class="proj-title">Cryptex Rolling file vault</h3>
+          <p class="proj-desc">Personal vault with file encryption features</p>
+          <div class="proj-links">
+            <a href="https://github.com/Shr1H4x/Cryptex-Rolling-file-vault" target="_blank" rel="noopener" class="proj-link">
+              View Code <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <span class="proj-date mono">February 2026</span>
+        </div>
+
+        <div class="project-featured" data-tilt>
+          <div class="project-featured-meta">
+            <span class="proj-num mono accent">03</span>
+            <div class="proj-tags">
+              <span class="proj-tag">File Transfer</span><span class="proj-tag">Wireless</span><span class="proj-tag accent-tag">Featured</span>
+            </div>
+          </div>
+          <h3 class="proj-title">NetToss Wireless File Transfer</h3>
+          <p class="proj-desc">File transfer over internet and wifi direct</p>
+          <div class="proj-links">
+            <a href="https://github.com/Shr1H4x/NetToss-Wireless_File_Transfer" target="_blank" rel="noopener" class="proj-link">
+              View Code <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <span class="proj-date mono">January 2026</span>
+        </div>
+      </div>
+
+      <div class="projects-divider" data-reveal>
+        <span class="mono">all_projects</span>
+        <div class="divider-line"></div>
+      </div>
+
+      <div class="projects-grid" id="githubProjectsGrid" data-reveal>
+
+        <div class="project-card" data-tilt>
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">📁</span>
+              <span class="lang-badge-icon">SH</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag">Shell</span><span class="proj-tag">Open Source</span></div>
+          </div>
+          <h4 class="pc-title">Arch starship setup</h4>
+          <p class="pc-desc">arch setup of starship</p>
+          <a href="https://github.com/Shr1H4x/Arch-starship-setup" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Sept 2026</span>
+        </div>
+
+        <div class="project-card" data-tilt>
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">🔧</span>
+              <span class="lang-badge-icon">SH</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag">Automation</span><span class="proj-tag">Linux</span></div>
+          </div>
+          <h4 class="pc-title">sysmaint</h4>
+          <p class="pc-desc">Interactive Zsh maintenance tool for Debian/Kali: apt update/upgrade, clean progress UI, logs, snapshots.</p>
+          <a href="https://github.com/Shr1H4x/sysmaint" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Apr 2026</span>
+        </div>
+
+        <div class="project-card" data-tilt>
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">📁</span>
+              <span class="lang-badge-icon">SH</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag">Shell</span><span class="proj-tag">Open Source</span></div>
+          </div>
+          <h4 class="pc-title">Nvidia GPU setup Kali</h4>
+          <p class="pc-desc">Nvidia GPU installation and setup for kali linux </p>
+          <a href="https://github.com/Shr1H4x/Nvidia-GPU-setup-Kali" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Mar 2026</span>
+        </div>
+
+        <div class="project-card" data-tilt>
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">📁</span>
+              <span class="lang-badge-icon">SH</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag">Shell</span><span class="proj-tag">Open Source</span></div>
+          </div>
+          <h4 class="pc-title">inet</h4>
+          <p class="pc-desc">simple IP shower</p>
+          <a href="https://github.com/Shr1H4x/inet" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Mar 2026</span>
+        </div>
+
+        <div class="project-card" data-tilt>
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">🐚</span>
+              <span class="lang-badge-icon">SH</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag">Recon</span><span class="proj-tag">Port Scan</span></div>
+          </div>
+          <h4 class="pc-title">NCPD</h4>
+          <p class="pc-desc">No description provided.</p>
+          <a href="https://github.com/Shr1H4x/NCPD" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Oct 2025</span>
+        </div>
+
+        <div class="project-card" data-tilt>
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">📥</span>
+              <span class="lang-badge-icon">PY</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag">Automation</span><span class="proj-tag">Scraping</span></div>
+          </div>
+          <h4 class="pc-title">YouTube Downloader</h4>
+          <p class="pc-desc">No description provided.</p>
+          <a href="https://github.com/Shr1H4x/YouTube-Downloader" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Jun 2025</span>
+        </div>
+
+        <div class="project-card" data-tilt>
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">🔗</span>
+              <span class="lang-badge-icon">PY</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag">Threat Intel</span><span class="proj-tag">Blue Team</span></div>
+          </div>
+          <h4 class="pc-title">URL Defanger</h4>
+          <p class="pc-desc">No description provided.</p>
+          <a href="https://github.com/Shr1H4x/URL-Defanger" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">May 2025</span>
+        </div>
+
+        <div class="project-card" data-tilt>
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">🌐</span>
+              <span class="lang-badge-icon">PY</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag">Recon</span><span class="proj-tag">Network</span></div>
+          </div>
+          <h4 class="pc-title">port scanner GUI</h4>
+          <p class="pc-desc">No description provided.</p>
+          <a href="https://github.com/Shr1H4x/port_scanner_GUI" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Mar 2025</span>
+        </div>
+
+        <div class="project-card" data-tilt>
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">🕷️</span>
+              <span class="lang-badge-icon">PY</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag">OSINT</span><span class="proj-tag">Crawler</span></div>
+          </div>
+          <h4 class="pc-title">web crawler GUI</h4>
+          <p class="pc-desc">No description provided.</p>
+          <a href="https://github.com/Shr1H4x/web_crawler_GUI" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Mar 2025</span>
+        </div>
+
+        <div class="project-card" data-tilt>
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">🎓</span>
+              <span class="lang-badge-icon">PHP</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag">Full Stack</span><span class="proj-tag">Database</span></div>
+          </div>
+          <h4 class="pc-title">Student Management System</h4>
+          <p class="pc-desc">Student Management System using PHP, SQL, CSS</p>
+          <a href="https://github.com/Shr1H4x/Student-Management-System" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Aug 2024</span>
+        </div>
+
+        <div class="project-card" data-tilt>
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">🔒</span>
+              <span class="lang-badge-icon">SH</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag">Encryption</span><span class="proj-tag">Bash</span></div>
+          </div>
+          <h4 class="pc-title">cryptography in linux</h4>
+          <p class="pc-desc">No description provided.</p>
+          <a href="https://github.com/Shr1H4x/cryptography-in-linux" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Mar 2024</span>
+        </div>
+
+        <div class="project-card" data-tilt>
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">🌐</span>
+              <span class="lang-badge-icon">PY</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag">Recon</span><span class="proj-tag">Network</span></div>
+          </div>
+          <h4 class="pc-title">port scanner</h4>
+          <p class="pc-desc">an network port scanning tool using python</p>
+          <a href="https://github.com/Shr1H4x/port-scanner" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Feb 2024</span>
+        </div>
+
+        <div class="project-card" data-tilt>
+          <div class="pc-header">
+            <div class="pc-left">
+              <span class="pc-emoji">🔒</span>
+              <span class="lang-badge-icon">C</span>
+            </div>
+            <div class="pc-tags"><span class="proj-tag">Encryption</span><span class="proj-tag">Low Level</span></div>
+          </div>
+          <h4 class="pc-title">cryptography</h4>
+          <p class="pc-desc">An Cryptography code using c language only</p>
+          <a href="https://github.com/Shr1H4x/cryptography" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Feb 2024</span>
+        </div>
+      </div>
+      <!-- PROJECTS_STATIC_END -->
+
+      <div class="section-cta" data-reveal>
+        <a class="btn btn-primary" href="https://github.com/Shr1H4x?tab=repositories" target="_blank" rel="noopener" data-magnetic>
+          View all 16 repos on GitHub
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══════════════ LABS ═══════════════ -->
+    <section class="section" id="labs">
+      <div class="section-head" data-reveal>
+        <p class="section-tag mono"><span class="tag-num">04</span> / labs</p>
+        <h2 data-type>Boxes, samples, and the receipts.</h2>
+        <p class="section-note" data-type>Study targets only. Nothing in production, nothing that isn't mine to poke.</p>
+      </div>
+
+      <div class="lab-list">
+        <article class="lab-card" data-reveal>
+          <div class="lab-main">
+            <div class="lab-title-row">
+              <h3>Alert</h3>
+              <span class="lab-ip mono">10.10.11.44</span>
+              <span class="pill pill-rooted">rooted</span>
+            </div>
+            <p class="lab-platform mono">HackTheBox</p>
+            <div class="lab-meta">
+              <span class="lab-tech mono">XSS → RCE</span>
+              <span class="lab-tools">Nmap · Burp · LinPEAS</span>
+            </div>
+          </div>
+          <span class="lab-index mono">01</span>
+        </article>
+
+        <article class="lab-card" data-reveal style="--delay:.05s">
+          <div class="lab-main">
+            <div class="lab-title-row">
+              <h3>Lampiao</h3>
+              <span class="pill pill-rooted">rooted</span>
+            </div>
+            <p class="lab-platform mono">VulnHub</p>
+            <div class="lab-meta">
+              <span class="lab-tech mono">CVE-2018-7600 · CVE-2016-5195</span>
+              <span class="lab-tools">Nmap · Metasploit · Hydra · CeWL · DirtyCow</span>
+            </div>
+          </div>
+          <span class="lab-index mono">02</span>
+        </article>
+
+        <article class="lab-card" data-reveal style="--delay:.1s">
+          <div class="lab-main">
+            <div class="lab-title-row">
+              <h3>Emotet Epoch 2</h3>
+              <span class="pill pill-smashed">smashed</span>
+            </div>
+            <p class="lab-platform mono">Malware Lab</p>
+            <div class="lab-meta">
+              <span class="lab-tech mono">Dynamic Analysis</span>
+              <span class="lab-tools">x32dbg · YARA · REMnux</span>
+            </div>
+          </div>
+          <span class="lab-index mono">03</span>
+        </article>
+
+        <article class="lab-card" data-reveal style="--delay:.15s">
+          <div class="lab-main">
+            <div class="lab-title-row">
+              <h3>RAT / Infostealer</h3>
+              <span class="pill pill-smashed">smashed</span>
+            </div>
+            <p class="lab-platform mono">Malware Lab</p>
+            <div class="lab-meta">
+              <span class="lab-tech mono">Static + Dynamic</span>
+              <span class="lab-tools">YARA (8 rules) · PEiD</span>
+            </div>
+          </div>
+          <span class="lab-index mono">04</span>
+        </article>
+
+        <article class="lab-card" data-reveal style="--delay:.2s">
+          <div class="lab-main">
+            <div class="lab-title-row">
+              <h3>SEA</h3>
+              <span class="pill pill-rooted">rooted</span>
+            </div>
+            <p class="lab-platform mono">HackTheBox</p>
+            <div class="lab-meta">
+              <span class="lab-tech mono">CVE-2023-41425</span>
+              <span class="lab-tools">Nmap · Hydra · SQL · log-filtration</span>
+            </div>
+          </div>
+          <span class="lab-index mono">05</span>
+        </article>
+      </div>
+
+      <div class="platform-row" data-reveal>
+        <a class="platform" href="https://tryhackme.com/p/Shr1H4x" target="_blank" rel="noopener">
+          <img src="image/thm.png" alt="" width="20" height="20" loading="lazy" />
+          <span><b>TryHackMe</b><small class="mono">Shr1H4x</small></span>
+          <span class="platform-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="platform" href="https://app.hackthebox.com/users/2106835" target="_blank" rel="noopener">
+          <span class="htb-mark mono">HTB</span>
+          <span><b>HackTheBox</b><small class="mono">ShriHax</small></span>
+          <span class="platform-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══════════════ BLOG ═══════════════ -->
+    <section class="section" id="blog">
+      <div class="section-head" data-reveal>
+        <p class="section-tag mono"><span class="tag-num">05</span> / writing</p>
+        <h2 data-type>Notes from the rabbit holes.</h2>
+        <p class="section-note" data-type>No dump-and-run writeups. Only my own work and ideas.</p>
+      </div>
+
+      <div class="blog-grid">
+        <a class="blog-card" href="blogs/ntfs-dirty-recovery.html" data-reveal>
+          <span class="blog-date mono">Sep 12, 2026</span>
+          <h3>Dirty NTFS Recovery: Back Up First, ntfsfix Later</h3>
+          <p>A dirty NTFS volume refused read-write mount on Linux. Read-only verify, quiet <code>cp</code> backup, then clear the dirty bit.</p>
+          <span class="blog-more">read note <span aria-hidden="true">↗</span></span>
+        </a>
+
+        <a class="blog-card" href="blogs/hybrid-gpu-video-decode.html" data-reveal style="--delay:.06s">
+          <span class="blog-date mono">Aug 31, 2026</span>
+          <h3>Fixing Laggy YouTube on a Hybrid-GPU Laptop</h3>
+          <p>The browser was software-decoding and software-compositing through the wrong GPU. Route video decode to the Intel iGPU that drives the display.</p>
+          <span class="blog-more">read note <span aria-hidden="true">↗</span></span>
+        </a>
+
+        <a class="blog-card" href="blogs/luks-keyfile-autounlock.html" data-reveal style="--delay:.12s">
+          <span class="blog-date mono">Aug 28, 2026</span>
+          <h3>Skipping the LUKS Password Prompt with a Keyfile</h3>
+          <p>Make a Limine UKI boot unlock the LUKS root volume automatically with an initramfs-embedded keyfile, including the attempt that failed and why.</p>
+          <span class="blog-more">read note <span aria-hidden="true">↗</span></span>
+        </a>
+      </div>
+
+      <div class="section-cta" data-reveal>
+        <a class="btn btn-ghost" href="blogs/">All posts <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- ═══════════════ CONTACT ═══════════════ -->
+    <section class="section section-contact" id="contact">
+      <div class="contact-panel" data-reveal>
+        <div class="contact-glow" aria-hidden="true"></div>
+        <p class="section-tag mono"><span class="tag-num">06</span> / contact</p>
+        <h2 data-type>Got a system that needs breaking<br /><span class="gradient-text">before someone else breaks it?</span></h2>
+        <p class="contact-lede" data-type>Open to internships, security work, or just trading notes on something you're stuck on. I usually reply within a day.</p>
+
+        <div class="contact-actions">
+          <a class="btn btn-primary btn-lg" href="mailto:shrijesh@proton.me?subject=Let%27s%20work%20together" data-magnetic>
+            shrijesh@proton.me
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3V6Zm0 1 9 7 9-7" /></svg>
+          </a>
+          <button class="btn btn-ghost btn-lg" id="copyEmail" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" /><path d="M5 15V5a2 2 0 0 1 2-2h8" /></svg>
+            copy address
+          </button>
+        </div>
+
+        <div class="contact-links">
+          <a href="https://github.com/Shr1H4x" target="_blank" rel="noopener"><span class="mono">GitHub</span><span>Shr1H4x</span></a>
+          <a href="https://www.linkedin.com/in/shrijesh-pokharel/" target="_blank" rel="noopener"><span class="mono">LinkedIn</span><span>shrijesh-pokharel</span></a>
+          <a href="https://tryhackme.com/p/Shr1H4x" target="_blank" rel="noopener"><span class="mono">TryHackMe</span><span>Shr1H4x</span></a>
+          <a href="https://app.hackthebox.com/users/2106835" target="_blank" rel="noopener"><span class="mono">HackTheBox</span><span>ShriHax</span></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true">&gt;_</span>
+          <span class="brand-text">shri<span class="accent">hax</span></span>
+        </a>
+        <p>Built by hand. No frameworks, no trackers.</p>
+      </div>
+
+      <div class="footer-meta mono">
+        <span id="localTime">Kathmandu --:--</span>
+        <span>© <span id="year">2026</span> Shrijesh Pokharel</span>
+        <span>last updated Nov 2026</span>
+      </div>
+
+      <a class="to-top" href="#top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" /></svg>
+      </a>
+    </div>
+  </footer>
+
+  <div class="toast mono" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

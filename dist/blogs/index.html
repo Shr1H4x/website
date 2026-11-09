@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blogs | Shrijesh Pokharel (Shr1H4x)</title>
+  <meta name="description" content="Blog posts by Shrijesh Pokharel: security notes, tool building, and learning in public." />
+  <link rel="canonical" href="https://shrijesh.com.np/blogs/" />
+  <link rel="icon" type="image/x-icon" href="../image/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="../image/favicon.svg" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <div class="page" id="top">
+
+    <!-- ======== HEADER ======== -->
+    <header class="site-header" id="siteHeader">
+      <div class="header-inner">
+        <a class="brand" href="../#top" aria-label="ShriHax, home">
+          <span class="brand-mark" aria-hidden="true">&gt;_</span>
+          <span class="brand-text">shri<span class="accent">hax</span></span>
+        </a>
+        <nav class="nav" id="primaryNav" aria-label="Primary">
+          <a href="../#about">About</a>
+          <a href="../#skills">Skills</a>
+          <a href="../#projects">Projects</a>
+          <a href="../#labs">Labs</a>
+          <a href="./" class="current">Blog</a>
+          <a href="../#contact">Contact</a>
+          <span class="nav-indicator" id="navIndicator" aria-hidden="true"></span>
+        </nav>
+        <div class="header-actions">
+          <span class="status-pill" title="Open to internships and security work">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span class="status-text">available</span>
+          </span>
+          <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation menu">
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <p class="mono dim"><a href="../#top">Home</a> / Blogs</p>
+
+    <h2>Blogs</h2>
+    <hr>
+    <p>Notes on security, tool building, and learning in public. No dump-and-run writeups. Only my own work and ideas.</p>
+    <hr>
+
+    <h3>Dirty NTFS Recovery: Back Up First, ntfsfix Later</h3>
+    <p class="post-meta">Sep 12, 2026 · linux, filesystems, data recovery</p>
+    <p>A dirty NTFS volume refused read-write mount on Linux. Read-only verify, quiet <code>cp</code> backup, then clear the dirty bit.</p>
+    <p><a class="btn" href="ntfs-dirty-recovery.html">Read more →</a></p>
+    <hr>
+
+    <h3>Fixing Laggy YouTube on a Hybrid-GPU Laptop</h3>
+    <p class="post-meta">Aug 31, 2026 · linux, Hyprland, browsers, VA-API</p>
+    <p>The browser was software-decoding AND software-compositing through the wrong GPU. Route video decode to the Intel iGPU that drives the display.</p>
+    <p><a class="btn" href="hybrid-gpu-video-decode.html">Read more →</a></p>
+    <hr>
+
+    <h3>Skipping the LUKS Password Prompt with a Keyfile</h3>
+    <p class="post-meta">Aug 28, 2026 · disk encryption, Arch, Limine</p>
+    <p>Make a Limine UKI boot unlock the LUKS root volume automatically with an initramfs-embedded keyfile, including the attempt that failed and why.</p>
+    <p><a class="btn" href="luks-keyfile-autounlock.html">Read more →</a></p>
+    <hr>
+
+    <!-- ======== FOOTER ======== -->
+    <center>
+      <p><a class="btn" href="../#top">← Back to Home</a></p>
+    </center>
+
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>

@@ -12,24 +12,36 @@
 </head>
 <body>
 
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
   <div class="page" id="top">
 
-    <!-- ======== STICKY TOPBAR (title + nav) ======== -->
-    <header class="topbar">
-      <span class="window-title">ShriHax | Blogs</span>
-      <nav class="retro-nav sticky-nav">
-        <a href="../#top">Home</a>
-        <a href="../#about">About Me</a>
-        <a href="../#skills">Skills</a>
-        <a href="../#projects">Projects</a>
-        <a href="../#labs">Labs</a>
-        <a href="./">Blogs</a>
-        <a href="../#contact">Contact</a>
-      </nav>
-      <button class="theme-btn" id="themeToggle" type="button" title="Toggle dark mode" aria-label="Toggle dark mode">
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-      </button>
+    <!-- ======== HEADER ======== -->
+    <header class="site-header" id="siteHeader">
+      <div class="header-inner">
+        <a class="brand" href="../#top" aria-label="ShriHax, home">
+          <span class="brand-mark" aria-hidden="true">&gt;_</span>
+          <span class="brand-text">shri<span class="accent">hax</span></span>
+        </a>
+        <nav class="nav" id="primaryNav" aria-label="Primary">
+          <a href="../#about">About</a>
+          <a href="../#skills">Skills</a>
+          <a href="../#projects">Projects</a>
+          <a href="../#labs">Labs</a>
+          <a href="./" class="current">Blog</a>
+          <a href="../#contact">Contact</a>
+          <span class="nav-indicator" id="navIndicator" aria-hidden="true"></span>
+        </nav>
+        <div class="header-actions">
+          <span class="status-pill" title="Open to internships and security work">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span class="status-text">available</span>
+          </span>
+          <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation menu">
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
     </header>
 
     <p class="mono dim"><a href="../#top">Home</a> / <a href="./">Blogs</a> / LUKS keyfile</p>
@@ -65,7 +77,7 @@ sudo chmod 600 /boot/cryptkey.bin
     <p>Enroll it as a LUKS slot (prompts for a current passphrase to authorize):</p>
 <pre><code>sudo cryptsetup luksAddKey /dev/nvme0n1p2 /boot/cryptkey.bin</code></pre>
 
-    <h3>4. First attempt (ESP-mounted keyfile) — FAILED at boot</h3>
+    <h3>4. First attempt (ESP-mounted keyfile): FAILED at boot</h3>
 <pre><code>echo 'KERNEL_CMDLINE[default]+=" cryptkey=PARTUUID=&lt;esp-partuuid&gt;:vfat:/cryptkey.bin"' \
   | sudo tee /etc/limine-entry-tool.d/cryptkey.conf</code></pre>
     <p>The keyfile worked at runtime (<code>cryptsetup luksOpen --test-passphrase --key-file /boot/cryptkey.bin</code> said "Key slot unlocked"), but the <code>encrypt</code> hook still prompted at boot: the legacy hook mounts the ESP too early and silently falls back to the passphrase prompt.</p>

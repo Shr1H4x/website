@@ -135,7 +135,7 @@ function buildTags(repo, limit, includeFeatured = false) {
   let allTags = [...new Set([...hardcodedTags, ...githubTopics])];
   if (allTags.length === 0) allTags = [repo.language || 'Tool', 'Open Source'];
 
-  const tags = allTags.slice(0, limit).map((tag) => `<span class="proj-tag${limit === 2 ? ' sm tag-plain' : ''}">${escapeHtml(tag)}</span>`).join('');
+  const tags = allTags.slice(0, limit).map((tag) => `<span class="proj-tag">${escapeHtml(tag)}</span>`).join('');
   return includeFeatured ? `${tags}<span class="proj-tag accent-tag">Featured</span>` : tags;
 }
 
@@ -148,7 +148,7 @@ function buildCard(repo) {
   const funcTags = buildTags(repo, 2);
 
   return `
-        <div class="project-card">
+        <div class="project-card" data-tilt>
           <div class="pc-header">
             <div class="pc-left">
               <span class="pc-emoji">${emoji}</span>
@@ -170,7 +170,7 @@ function buildFeaturedCard(repo, index) {
   const number = String(index + 1).padStart(2, '0');
 
   return `
-        <div class="project-featured">
+        <div class="project-featured" data-tilt>
           <div class="project-featured-meta">
             <span class="proj-num mono accent">${number}</span>
             <div class="proj-tags">
@@ -181,7 +181,7 @@ function buildFeaturedCard(repo, index) {
           <p class="proj-desc">${escapeHtml(desc)}</p>
           <div class="proj-links">
             <a href="${escapeHtml(repo.html_url)}" target="_blank" rel="noopener" class="proj-link">
-              View Code <i data-lucide="arrow-up-right"></i>
+              View Code <span aria-hidden="true">↗</span>
             </a>
           </div>
           <span class="proj-date mono">${date}</span>
